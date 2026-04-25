@@ -4,76 +4,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <!-- PRIMARY META -->
-  <title>Tasnim Ullah — Designer · Dreamer · Devoter | Portfolio</title>
-  <meta name="description"
-    content="Portfolio of Tasnim Ullah — a creative designer, video creator, and digital innovator from Bangladesh. Specializing in cinematic storytelling, brand identity, and AI-powered workflows.">
+  <title>Tasnim Ullah - Designer · Dreamer · Devoter | Portfolio</title>
+  <meta name="description" content="Portfolio of Tasnim Ullah - a creative designer, video creator, and digital innovator from Bangladesh. Specializing in cinematic storytelling, brand identity, and AI-powered workflows.">
   <meta name="author" content="Tasnim Ullah">
-  <meta name="keywords"
-    content="Tasnim Ullah, portfolio, designer, video creator, DaVinci Resolve, brand identity, motion design, AI integration, Bangladesh, freelance">
-  <meta name="theme-color" content="#050505">
-  <meta name="color-scheme" content="dark">
-  <!-- CANONICAL: add once you have a domain → <link rel="canonical" href="https://yourdomain.com/"> -->
-
-  <!-- OPEN GRAPH (Facebook, LinkedIn, Discord) -->
-  <meta property="og:type" content="website">
-  <!-- og:url — update once you have a domain -->
-  <meta property="og:title" content="Tasnim Ullah — Designer · Dreamer · Devoter">
-  <meta property="og:description"
-    content="Creative designer, video creator, and digital innovator from Bangladesh. Explore my work in cinematic storytelling, brand identity, and AI-powered innovation.">
-  <meta property="og:image" content="./og-image.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:site_name" content="Tasnim Ullah Portfolio">
-  <meta property="og:locale" content="en_US">
-
-  <!-- TWITTER CARD -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Tasnim Ullah — Designer · Dreamer · Devoter">
-  <meta name="twitter:description" content="Creative designer, video creator, and digital innovator from Bangladesh.">
-  <meta name="twitter:image" content="./og-image.png">
-
-  <!-- FAVICON (Inline SVG — no external file needed) -->
-  <link rel="icon" type="image/svg+xml"
-    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23050505'/%3E%3Ctext x='50' y='68' font-family='sans-serif' font-size='56' font-weight='bold' fill='%23ff1a1a' text-anchor='middle'%3ET%3C/text%3E%3C/svg%3E">
-  <link rel="apple-touch-icon"
-    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' rx='36' fill='%23050505'/%3E%3Ctext x='90' y='122' font-family='sans-serif' font-size='100' font-weight='bold' fill='%23ff1a1a' text-anchor='middle'%3ET%3C/text%3E%3C/svg%3E">
-
-  <!-- STRUCTURED DATA (JSON-LD) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Tasnim Ullah",
-    "url": "https://tasnimullah.com",
-    "jobTitle": "Creative Designer & Video Creator",
-    "description": "Designer, dreamer, and digital innovator from Bangladesh specializing in cinematic storytelling and AI-powered workflows.",
-    "sameAs": [
-      "https://github.com/tasnimullah",
-      "https://www.linkedin.com/in/tasnim-ullah/",
-      "https://x.com/tasnimullah"
-    ],
-    "knowsAbout": ["Video Editing", "Graphic Design", "Motion Design", "AI Integration", "Brand Identity"],
-    "address": {
-      "@type": "PostalAddress",
-      "addressCountry": "BD"
-    }
-  }
-  </script>
-
-  <!-- GOOGLE ANALYTICS — Replace G-XXXXXXXXXX with your Measurement ID -->
-  <!-- 
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-XXXXXXXXXX');
-  </script>
-  -->
-
-  <!-- FONTS -->
+  <meta name="keywords" content="Tasnim Ullah, portfolio, designer, video creator, DaVinci Resolve, brand identity, motion design, AI integration, Bangladesh, freelance">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -351,7 +286,7 @@
       cursor: pointer;
       background: none;
       border: none;
-      padding: 4px
+      padding: 4px;
     }
 
     .hamburger span {
@@ -359,49 +294,65 @@
       width: 22px;
       height: 1.5px;
       background: #fff;
-      transition: all 0.3s
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: translateY(6.5px) rotate(45deg);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: translateY(-6.5px) rotate(-45deg);
     }
 
     #mobile-menu {
       position: fixed;
-      inset: 0;
-      background: rgba(5, 5, 5, 0.97);
-      z-index: 200;
-      display: none;
+      top: 4.5rem;
+      right: 1.5rem;
+      width: 220px;
+      background: rgba(20, 20, 20, 0.7);
+      z-index: 90;
+      display: flex;
       flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: 2.5rem;
-      backdrop-filter: blur(20px)
+      align-items: flex-start;
+      gap: 1.25rem;
+      padding: 1.5rem;
+      border-radius: 1rem;
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transform: scale(0);
+      transform-origin: top right;
+      opacity: 0;
+      pointer-events: none;
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
     }
 
     #mobile-menu.open {
-      display: flex
+      transform: scale(1);
+      opacity: 1;
+      pointer-events: auto;
     }
 
     #mobile-menu a {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 3.5rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.25rem;
       color: #fff;
       text-decoration: none;
-      letter-spacing: 0.08em;
-      transition: color 0.25s
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.25s, transform 0.25s;
+      transform-origin: left center;
+      display: inline-block;
     }
 
     #mobile-menu a:hover {
-      color: var(--red)
-    }
-
-    #mobile-close {
-      position: absolute;
-      top: 1.5rem;
-      right: 2rem;
-      background: none;
-      border: none;
-      color: #fff;
-      font-size: 2rem;
-      cursor: pointer;
-      line-height: 1
+      color: var(--red);
+      transform: scale(1.05) translateX(4px);
     }
 
     /* FOOTER */
@@ -409,7 +360,9 @@
       border-top: 1px solid var(--border);
       padding: 2.5rem 2rem;
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
       align-items: center;
       flex-wrap: wrap;
       gap: 1rem;
@@ -520,14 +473,40 @@
       background: rgba(255, 26, 26, 0.15)
     }
 
+    .gate-btn.loading {
+      border-color: rgba(255, 26, 26, 0.2);
+      color: rgba(255, 255, 255, 0.7);
+      box-shadow: 0 0 20px rgba(255, 26, 26, 0.1);
+    }
+
     .gate-progress {
       position: absolute;
-      bottom: 0;
-      left: 0;
+      bottom: -1px;
+      left: 50%;
       height: 2px;
       background: var(--red);
       width: 0;
-      transition: width 1s linear
+      transform: translateX(-50%);
+      box-shadow: 0 0 10px var(--red), 0 0 20px var(--red), 0 0 30px var(--red);
+      transition: width 1s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+      border-radius: 99px;
+      z-index: 3;
+    }
+
+    .gate-btn.loading .gate-progress {
+      animation: progressGlow 1s infinite alternate;
+    }
+
+    @keyframes progressGlow {
+      0% {
+        box-shadow: 0 0 10px var(--red), 0 0 20px var(--red);
+        filter: brightness(1);
+      }
+
+      100% {
+        box-shadow: 0 0 15px var(--red), 0 0 30px var(--red), 0 0 50px var(--red);
+        filter: brightness(1.5);
+      }
     }
 
     /* SECTIONS */
@@ -1330,28 +1309,6 @@
 
 <body>
 
-  <!-- NOSCRIPT FALLBACK -->
-  <noscript>
-    <style>
-      .page {
-        display: block !important
-      }
-
-      #gate {
-        display: none !important
-      }
-
-      #cursor-dot,
-      #cursor-ring {
-        display: none !important
-      }
-    </style>
-    <div
-      style="background:var(--red);color:#fff;text-align:center;padding:0.5rem;font-size:0.8rem;position:fixed;top:0;left:0;right:0;z-index:9999">
-      This site works best with JavaScript enabled.
-    </div>
-  </noscript>
-
   <div id="cursor-dot"></div>
   <div id="cursor-ring"></div>
   <div id="bg-void"></div>
@@ -1369,7 +1326,7 @@
       <div style="color:#fff">TASNIM ULLAH</div>
     </div>
     <button class="gate-btn" id="gate-btn">
-      UNLOCK EXPERIENCE
+      <span class="btn-text">UNLOCK EXPERIENCE</span>
       <div class="gate-progress" id="gate-progress"></div>
     </button>
   </div>
@@ -1378,10 +1335,10 @@
   <nav id="navbar">
     <a href="#" class="nav-monogram" onclick="navigate('home');return false">T·U</a>
     <div class="nav-links">
-      <a href="#" onclick="navigate('home');return false" data-page="home">Home</a>
-      <a href="#" onclick="navigate('about');return false" data-page="about">About</a>
-      <a href="#" onclick="navigate('work');return false" data-page="work">Work</a>
-      <a href="#" onclick="navigate('contact');return false" data-page="contact">Contact</a>
+      <a href="#section-home" onclick="navigate('home');return false" data-page="home">Home</a>
+      <a href="#section-about" onclick="navigate('about');return false" data-page="about">About</a>
+      <a href="#section-work" onclick="navigate('work');return false" data-page="work">Work</a>
+      <a href="#page-contact" onclick="navigate('contact');return false" data-page="contact">Contact</a>
     </div>
     <button class="hamburger" id="hamburger" aria-label="Open menu">
       <span></span><span></span><span></span>
@@ -1390,401 +1347,403 @@
 
   <!-- MOBILE MENU -->
   <div id="mobile-menu">
-    <button id="mobile-close" aria-label="Close menu">✕</button>
-    <a href="#" onclick="navigate('home');closeMobileMenu();return false">Home</a>
-    <a href="#" onclick="navigate('about');closeMobileMenu();return false">About</a>
-    <a href="#" onclick="navigate('work');closeMobileMenu();return false">Work</a>
-    <a href="#" onclick="navigate('contact');closeMobileMenu();return false">Contact</a>
+    <a href="#section-home" onclick="navigate('home');closeMobileMenu();return false">Home</a>
+    <a href="#section-about" onclick="navigate('about');closeMobileMenu();return false">About</a>
+    <a href="#section-work" onclick="navigate('work');closeMobileMenu();return false">Work</a>
+    <a href="#page-contact" onclick="navigate('contact');closeMobileMenu();return false">Contact</a>
   </div>
 
-  <!-- HOME PAGE -->
-  <div class="page active" id="page-home">
-    <!-- Hero -->
-    <div class="hero" style="min-height:100vh;position:relative">
-      <div class="hero-name">
-        <span>TASNIM</span><br>
-        <span class="red">ULLAH.</span>
+  <!-- MAIN SCROLLABLE VIEW -->
+  <div class="page active" id="page-main">
+    <!-- HOME SECTION -->
+    <div id="section-home">
+      <!-- Hero -->
+      <div class="hero" style="min-height:100vh;position:relative">
+        <div class="hero-name">
+          <span>TASNIM</span><br>
+          <span class="red">ULLAH.</span>
+        </div>
+        <p class="hero-subtitle">Designer · Dreamer · Devoter</p>
+        <div class="scroll-cue">
+          <span class="scroll-cue-label">Dive In</span>
+          <div class="scroll-cue-line"></div>
+        </div>
       </div>
-      <p class="hero-subtitle">Designer · Dreamer · Devoter</p>
-      <div class="scroll-cue">
-        <span class="scroll-cue-label">Dive In</span>
-        <div class="scroll-cue-line"></div>
-      </div>
-    </div>
 
-    <!-- Origin Story -->
-    <section style="padding-top:6rem">
-      <div class="chapter-num">01</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start" id="origin-grid">
-        <div style="position:relative;z-index:1">
-          <div class="section-label reveal"><span>WHERE IT ALL BEGAN</span></div>
-          <h2 class="section-heading reveal reveal-delay-1">
-            THE SPARK<br><span class="red">OF CREATIVITY</span>
-          </h2>
-          <div class="glass" style="padding:2rem;margin-top:2rem" class="reveal reveal-delay-2">
-            <blockquote class="reveal reveal-delay-2"
-              style="font-style:italic;font-size:1.05rem;color:var(--text-dim);border-left:2px solid var(--red);padding-left:1.25rem;margin-bottom:1rem;line-height:1.7">
-              "Every pixel has a story. Every frame has a soul."
-            </blockquote>
-            <p class="reveal reveal-delay-3" style="color:var(--text-dim);font-size:0.9rem;line-height:1.8">
-              Born from a relentless curiosity and a love for visual storytelling, Tasnim Ullah has carved a unique
-              space in the world of design and video creation. From Bangladesh to the digital frontier, every project is
-              a new chapter in an ongoing autobiography of creativity.
-            </p>
-          </div>
-        </div>
-        <div class="reveal reveal-delay-3" id="origin-deco"
-          style="display:flex;align-items:center;justify-content:center">
-          <div
-            style="width:260px;height:260px;border:1px dashed rgba(255,26,26,0.35);border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(255,26,26,0.03)">
-            <svg width="80" height="80" viewBox="0 0 80 80" fill="none" opacity="0.28">
-              <rect x="10" y="10" width="24" height="24" rx="4" stroke="#ff1a1a" stroke-width="1.5" />
-              <rect x="46" y="10" width="24" height="24" rx="4" stroke="#ff1a1a" stroke-width="1.5" />
-              <rect x="10" y="46" width="24" height="24" rx="4" stroke="#ff1a1a" stroke-width="1.5" />
-              <rect x="46" y="46" width="24" height="24" rx="4" stroke="#ff1a1a" stroke-width="1.5" />
-              <line x1="22" y1="34" x2="22" y2="46" stroke="#ff1a1a" stroke-width="1" />
-              <line x1="58" y1="34" x2="58" y2="46" stroke="#ff1a1a" stroke-width="1" />
-              <line x1="34" y1="22" x2="46" y2="22" stroke="#ff1a1a" stroke-width="1" />
-              <line x1="34" y1="58" x2="46" y2="58" stroke="#ff1a1a" stroke-width="1" />
-            </svg>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Stats -->
-    <section>
-      <div class="glass stats-grid reveal" style="padding:2.5rem">
-        <div style="text-align:center;padding:1rem">
-          <div class="stat-value" id="stat-years">0</div>
-          <div class="stat-divider">/ Years Active</div>
-          <div class="stat-label">Experience</div>
-        </div>
-        <div style="text-align:center;padding:1rem;border-left:1px solid var(--border)">
-          <div class="stat-value" id="stat-projects">0</div>
-          <div class="stat-divider">/ Projects</div>
-          <div class="stat-label">Completed</div>
-        </div>
-        <div style="text-align:center;padding:1rem;border-left:1px solid var(--border)">
-          <div class="stat-value" id="stat-clients">0</div>
-          <div class="stat-divider">/ Clients</div>
-          <div class="stat-label">Served</div>
-        </div>
-        <div style="text-align:center;padding:1rem;border-left:1px solid var(--border)">
-          <div class="stat-value">∞</div>
-          <div class="stat-divider">/ Curiosity</div>
-          <div class="stat-label">Unlimited</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Skills -->
-    <section>
-      <div class="chapter-num">02</div>
-      <div style="position:relative;z-index:1">
-        <div class="section-label reveal"><span>TOOLS OF CREATIVITY</span></div>
-        <h2 class="section-heading reveal reveal-delay-1" style="margin-bottom:3rem">
-          WHAT I <span class="red">MASTER</span>
-        </h2>
-        <div class="skills-grid">
-          <div class="glass skill-card glass-hover reveal reveal-delay-1">
-            <div class="skill-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(255,80,80,0.8)"
-                stroke-width="1.5">
-                <polyline points="16 18 22 12 16 6" />
-                <polyline points="8 6 2 12 8 18" />
-              </svg>
-            </div>
-            <h3 style="font-size:1.1rem;font-weight:700;margin-bottom:0.5rem">Video Creation</h3>
-            <p style="font-size:0.82rem;color:var(--text-dim);line-height:1.6;margin-bottom:0.5rem">Cinematic
-              storytelling through DaVinci Resolve. Color science, pacing, and emotional resonance in every frame.</p>
-            <div class="tag-list">
-              <div class="tag-item">Story Telling</div>
-              <div class="tag-item">Engaging Visuals</div>
-              <div class="tag-item">Colour Science</div>
-            </div>
-          </div>
-          <div class="glass skill-card glass-hover reveal reveal-delay-2">
-            <div class="skill-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(255,80,80,0.8)"
-                stroke-width="1.5">
-                <path d="M12 19l7-7 3 3-7 7-3-3z" />
-                <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z" />
-                <path d="M2 2l7.586 7.586" />
-                <circle cx="11" cy="11" r="2" />
-              </svg>
-            </div>
-            <h3 style="font-size:1.1rem;font-weight:700;margin-bottom:0.5rem">Design</h3>
-            <p style="font-size:0.82rem;color:var(--text-dim);line-height:1.6;margin-bottom:0.5rem">Visual systems built
-              with Affinity Suite. Motion design that breathes life into static concepts.</p>
-            <div class="tag-list">
-              <div class="tag-item">Affinity Suite</div>
-              <div class="tag-item">Motion Design</div>
-              <div class="tag-item">Brand Identity</div>
-            </div>
-          </div>
-          <div class="glass skill-card glass-hover reveal reveal-delay-3">
-            <div class="skill-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(255,80,80,0.8)"
-                stroke-width="1.5">
-                <circle cx="12" cy="12" r="10" />
-                <line x1="2" y1="12" x2="22" y2="12" />
-                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-              </svg>
-            </div>
-            <h3 style="font-size:1.1rem;font-weight:700;margin-bottom:0.5rem">Innovation</h3>
-            <p style="font-size:0.82rem;color:var(--text-dim);line-height:1.6;margin-bottom:0.5rem">AI-powered workflows
-              and experimental tech. Building the future one integration at a time.</p>
-            <div class="tag-list">
-              <div class="tag-item">AI Powered Builds</div>
-              <div class="tag-item">AI Integration</div>
-              <div class="tag-item">Performance Tuning</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Philosophy -->
-    <section>
-      <div class="chapter-num">03</div>
-      <div style="position:relative;z-index:1">
-        <div class="section-label reveal"><span>MY PHILOSOPHY</span></div>
-        <div class="glass philosophy-card reveal reveal-delay-1" style="margin-top:1.5rem">
-          <div class="quote-mark">"</div>
+      <!-- Origin Story -->
+      <section style="padding-top:6rem">
+        <div class="chapter-num"></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start" id="origin-grid">
           <div style="position:relative;z-index:1">
-            <h2 class="section-heading" style="font-size:clamp(2.5rem,6vw,4.5rem);margin-bottom:1.5rem">
-              STAY <span class="red">HUNGRY.</span><br>
-              STAY <span class="red">FOOLISH.</span><br>
-              STAY IN THE VOID.
+            <div class="section-label reveal"><span>WHERE IT ALL BEGAN</span></div>
+            <h2 class="section-heading reveal reveal-delay-1">
+              THE SPARK<br><span class="red">OF CREATIVITY</span>
             </h2>
-            <p style="max-width:560px;color:var(--text-dim);font-size:0.92rem;line-height:1.85">
-              In the space between what is and what could be, creativity finds its truest form. The void isn't emptiness
-              — it's infinite potential, waiting for the one who dares to reach in.
-            </p>
+            <div class="glass" style="padding:2rem;margin-top:2rem" class="reveal reveal-delay-2">
+              <blockquote class="reveal reveal-delay-2"
+                style="font-style:italic;font-size:1.05rem;color:var(--text-dim);border-left:2px solid var(--red);padding-left:1.25rem;margin-bottom:1rem;line-height:1.7">
+                "Every pixel has a story. Every frame has a soul."
+              </blockquote>
+              <p class="reveal reveal-delay-3" style="color:var(--text-dim);font-size:0.9rem;line-height:1.8">
+                Born from a relentless curiosity and a love for visual storytelling, Tasnim Ullah has carved a unique
+                space in the world of design and video creation. From Bangladesh to the digital frontier, every project
+                is
+                a new chapter in an ongoing autobiography of creativity.
+              </p>
+            </div>
+          </div>
+          <div class="reveal reveal-delay-3" id="origin-deco"
+            style="display:flex;align-items:center;justify-content:center">
+            <div
+              style="width:260px;height:260px;border:1px dashed rgba(255,26,26,0.35);border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(255,26,26,0.03)">
+              <svg width="80" height="80" viewBox="0 0 80 80" fill="none" opacity="0.28">
+                <rect x="10" y="10" width="24" height="24" rx="4" stroke="#ff1a1a" stroke-width="1.5" />
+                <rect x="46" y="10" width="24" height="24" rx="4" stroke="#ff1a1a" stroke-width="1.5" />
+                <rect x="10" y="46" width="24" height="24" rx="4" stroke="#ff1a1a" stroke-width="1.5" />
+                <rect x="46" y="46" width="24" height="24" rx="4" stroke="#ff1a1a" stroke-width="1.5" />
+                <line x1="22" y1="34" x2="22" y2="46" stroke="#ff1a1a" stroke-width="1" />
+                <line x1="58" y1="34" x2="58" y2="46" stroke="#ff1a1a" stroke-width="1" />
+                <line x1="34" y1="22" x2="46" y2="22" stroke="#ff1a1a" stroke-width="1" />
+                <line x1="34" y1="58" x2="46" y2="58" stroke="#ff1a1a" stroke-width="1" />
+              </svg>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- CTA -->
-    <section style="text-align:center;padding-bottom:8rem">
-      <div class="section-label reveal" style="justify-content:center"><span>GET IN TOUCH</span></div>
-      <h2 class="cta-heading reveal reveal-delay-1">
-        LET'S MAKE<br>THE <span class="gradient-text">HISTORY.</span>
-      </h2>
-      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:2.5rem"
-        class="reveal reveal-delay-2">
-        <button class="btn btn-primary" onclick="navigate('contact')">INITIATE CONNECTION →</button>
-        <a class="btn btn-outline" href="./cv.pdf" download>KNOW MORE (CV) ↓</a>
-      </div>
-      <div class="social-links reveal reveal-delay-3" style="justify-content:center">
-        <a href="https://github.com/tasnimullah" target="_blank" class="social-link">Github</a>
-        <a href="https://www.linkedin.com/in/tasnim-ullah/" target="_blank" class="social-link">LinkedIn</a>
-        <a href="https://x.com/Tasnimullah5" target="_blank" class="social-link">X.com</a>
-        <a href="https://www.facebook.com/tsnm.u1" target="_blank" class="social-link">Facebook</a>
-      </div>
-    </section>
-  </div>
+      <!-- Stats -->
+      <section>
+        <div class="glass stats-grid reveal" style="padding:2.5rem">
+          <div style="text-align:center;padding:1rem">
+            <div class="stat-value" id="stat-years">0</div>
+            <div class="stat-divider">/ Years Active</div>
+            <div class="stat-label">Experience</div>
+          </div>
+          <div style="text-align:center;padding:1rem;border-left:1px solid var(--border)">
+            <div class="stat-value" id="stat-projects">0</div>
+            <div class="stat-divider">/ Projects</div>
+            <div class="stat-label">Completed</div>
+          </div>
+          <div style="text-align:center;padding:1rem;border-left:1px solid var(--border)">
+            <div class="stat-value" id="stat-clients">0</div>
+            <div class="stat-divider">/ Clients</div>
+            <div class="stat-label">Served</div>
+          </div>
+          <div style="text-align:center;padding:1rem;border-left:1px solid var(--border)">
+            <div class="stat-value">∞</div>
+            <div class="stat-divider">/ Curiosity</div>
+            <div class="stat-label">Unlimited</div>
+          </div>
+        </div>
+      </section>
 
-  <!-- ABOUT PAGE -->
-  <div class="page" id="page-about">
-    <div class="about-hero" style="padding-top:8rem">
-      <div class="section-label reveal"><span>KNOW THE PERSON</span></div>
-      <h1 class="section-heading reveal reveal-delay-1"
-        style="font-size:clamp(4rem,14vw,10rem);line-height:0.85;margin-bottom:1rem">
-        ABOUT.<br><span class="red">ME</span>
-      </h1>
-      <p class="reveal reveal-delay-2"
-        style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.4em;text-transform:uppercase;color:var(--text-muted)">
-        The person behind the pixels.</p>
+      <!-- Skills -->
+      <section>
+        <div class="chapter-num"></div>
+        <div style="position:relative;z-index:1">
+          <div class="section-label reveal"><span>TOOLS OF CREATIVITY</span></div>
+          <h2 class="section-heading reveal reveal-delay-1" style="margin-bottom:3rem">
+            WHAT I <span class="red">MASTER</span>
+          </h2>
+          <div class="skills-grid">
+            <div class="glass skill-card glass-hover reveal reveal-delay-1">
+              <div class="skill-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(255,80,80,0.8)"
+                  stroke-width="1.5">
+                  <polyline points="16 18 22 12 16 6" />
+                  <polyline points="8 6 2 12 8 18" />
+                </svg>
+              </div>
+              <h3 style="font-size:1.1rem;font-weight:700;margin-bottom:0.5rem">Video Creation</h3>
+              <p style="font-size:0.82rem;color:var(--text-dim);line-height:1.6;margin-bottom:0.5rem">Cinematic
+                storytelling through DaVinci Resolve. Color science, pacing, and emotional resonance in every frame.</p>
+              <div class="tag-list">
+                <div class="tag-item">Story Telling</div>
+                <div class="tag-item">Engaging Visuals</div>
+                <div class="tag-item">Colour Science</div>
+              </div>
+            </div>
+            <div class="glass skill-card glass-hover reveal reveal-delay-2">
+              <div class="skill-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(255,80,80,0.8)"
+                  stroke-width="1.5">
+                  <path d="M12 19l7-7 3 3-7 7-3-3z" />
+                  <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z" />
+                  <path d="M2 2l7.586 7.586" />
+                  <circle cx="11" cy="11" r="2" />
+                </svg>
+              </div>
+              <h3 style="font-size:1.1rem;font-weight:700;margin-bottom:0.5rem">Design</h3>
+              <p style="font-size:0.82rem;color:var(--text-dim);line-height:1.6;margin-bottom:0.5rem">Visual systems
+                built
+                with Affinity Suite. Motion design that breathes life into static concepts.</p>
+              <div class="tag-list">
+                <div class="tag-item">Affinity Suite</div>
+                <div class="tag-item">Motion Design</div>
+                <div class="tag-item">Brand Identity</div>
+              </div>
+            </div>
+            <div class="glass skill-card glass-hover reveal reveal-delay-3">
+              <div class="skill-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(255,80,80,0.8)"
+                  stroke-width="1.5">
+                  <circle cx="12" cy="12" r="10" />
+                  <line x1="2" y1="12" x2="22" y2="12" />
+                  <path
+                    d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                </svg>
+              </div>
+              <h3 style="font-size:1.1rem;font-weight:700;margin-bottom:0.5rem">Innovation</h3>
+              <p style="font-size:0.82rem;color:var(--text-dim);line-height:1.6;margin-bottom:0.5rem">AI-powered
+                workflows
+                and experimental tech. Building the future one integration at a time.</p>
+              <div class="tag-list">
+                <div class="tag-item">AI Powered Builds</div>
+                <div class="tag-item">AI Integration</div>
+                <div class="tag-item">Performance Tuning</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
     </div>
 
-    <section>
-      <div class="bio-grid">
-        <div class="reveal">
-          <div class="glass avatar-card" style="width:100%;max-width:300px;height:300px;font-size:5rem">
-            T.U.
-          </div>
-        </div>
-        <div>
-          <div class="section-label reveal"><span>BIO</span></div>
-          <div class="reveal reveal-delay-1" style="color:var(--text-dim);font-size:0.95rem;line-height:1.9">
-            <p style="margin-bottom:1rem">
-              Tasnim Ullah is a creative from Bangladesh — a designer, video creator, and digital innovator who lives at
-              the intersection of art and technology.
-            </p>
-            <p style="margin-bottom:1rem">
-              What started as a curiosity about visual storytelling quickly evolved into a full-fledged craft. From
-              DaVinci Resolve color grading sessions that stretch into the night, to building AI-integrated pipelines
-              that push the boundaries of what's possible — Tasnim is always in pursuit of the extraordinary.
-            </p>
-            <p>
-              Driven by a deep belief that creativity is not a talent but a discipline, every project is approached with
-              the philosophy of the void: strip away the noise, find the signal, and let the work speak with
-              unforgettable clarity.
-            </p>
-          </div>
-        </div>
+    <!-- ABOUT SECTION -->
+    <div id="section-about">
+      <div class="about-hero" style="padding-top:8rem">
+        <div class="section-label reveal"><span>KNOW THE PERSON</span></div>
+        <h1 class="section-heading reveal reveal-delay-1"
+          style="font-size:clamp(4rem,14vw,10rem);line-height:0.85;margin-bottom:1rem">
+          ABOUT.<br><span class="red">ME</span>
+        </h1>
+        <p class="reveal reveal-delay-2"
+          style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.4em;text-transform:uppercase;color:var(--text-muted)">
+          The person behind the pixels.</p>
       </div>
-    </section>
 
-    <section>
-      <div class="section-label reveal"><span>VALUES & PRINCIPLES</span></div>
-      <h2 class="section-heading reveal reveal-delay-1" style="margin-bottom:2.5rem">WHAT <span class="red">DRIVES
-          ME</span></h2>
-      <div class="values-grid">
-        <div class="glass glass-hover reveal reveal-delay-1" style="padding:2rem">
-          <div style="font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--red);margin-bottom:0.75rem">01
+      <section>
+        <div class="bio-grid">
+          <div class="reveal">
+            <div class="glass avatar-card" style="width:100%;max-width:300px;height:300px;font-size:5rem">
+              T.U.
+            </div>
           </div>
-          <h3 style="font-weight:700;margin-bottom:0.75rem">Design First</h3>
-          <p style="color:var(--text-dim);font-size:0.85rem;line-height:1.7">Aesthetics are not decoration — they are
-            function. Every visual decision serves a purpose deeper than beauty.</p>
-        </div>
-        <div class="glass glass-hover reveal reveal-delay-2" style="padding:2rem">
-          <div style="font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--red);margin-bottom:0.75rem">02
+          <div>
+            <div class="section-label reveal"><span>BIO</span></div>
+            <div class="reveal reveal-delay-1" style="color:var(--text-dim);font-size:0.95rem;line-height:1.9">
+              <p style="margin-bottom:1rem">
+                Tasnim Ullah is a creative from Bangladesh — a designer, video creator, and digital innovator who lives
+                at
+                the intersection of art and technology.
+              </p>
+              <p style="margin-bottom:1rem">
+                What started as a curiosity about visual storytelling quickly evolved into a full-fledged craft. From
+                DaVinci Resolve color grading sessions that stretch into the night, to building AI-integrated pipelines
+                that push the boundaries of what's possible — Tasnim is always in pursuit of the extraordinary.
+              </p>
+              <p>
+                Driven by a deep belief that creativity is not a talent but a discipline, every project is approached
+                with
+                the philosophy of the void: strip away the noise, find the signal, and let the work speak with
+                unforgettable clarity.
+              </p>
+            </div>
           </div>
-          <h3 style="font-weight:700;margin-bottom:0.75rem">Deep Work</h3>
-          <p style="color:var(--text-dim);font-size:0.85rem;line-height:1.7">The void philosophy: total immersion,
-            distraction elimination, pure creative output. No half-measures.</p>
         </div>
-        <div class="glass glass-hover reveal reveal-delay-3" style="padding:2rem">
-          <div style="font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--red);margin-bottom:0.75rem">03
-          </div>
-          <h3 style="font-weight:700;margin-bottom:0.75rem">Always Learning</h3>
-          <p style="color:var(--text-dim);font-size:0.85rem;line-height:1.7">AI, new tools, emerging workflows —
-            curiosity is the only constant. The craft never stops evolving.</p>
-        </div>
-      </div>
-    </section>
+      </section>
 
-    <section>
-      <div class="section-label reveal"><span>JOURNEY</span></div>
-      <h2 class="section-heading reveal reveal-delay-1" style="margin-bottom:3rem">THE <span class="red">TIMELINE</span>
-      </h2>
-      <div class="timeline">
-        <div class="timeline-line"></div>
-        <div class="timeline-item">
-          <div class="timeline-content glass reveal" style="padding:1.5rem">
-            <div
-              style="font-family:'JetBrains Mono',monospace;font-size:0.52rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--red);margin-bottom:0.5rem">
-              2024</div>
-            <h3 style="font-weight:700;margin-bottom:0.5rem">Started the Journey</h3>
-            <p style="color:var(--text-dim);font-size:0.85rem;line-height:1.6">Took the leap into freelance creative
-              work. The first frame. The first design. The beginning of the autobiography.</p>
+      <section>
+        <div class="section-label reveal"><span>VALUES & PRINCIPLES</span></div>
+        <h2 class="section-heading reveal reveal-delay-1" style="margin-bottom:2.5rem">WHAT <span class="red">DRIVES
+            ME</span></h2>
+        <div class="values-grid">
+          <div class="glass glass-hover reveal reveal-delay-1" style="padding:2rem">
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--red);margin-bottom:0.75rem">01
+            </div>
+            <h3 style="font-weight:700;margin-bottom:0.75rem">Design First</h3>
+            <p style="color:var(--text-dim);font-size:0.85rem;line-height:1.7">Aesthetics are not decoration — they are
+              function. Every visual decision serves a purpose deeper than beauty.</p>
           </div>
-          <div class="timeline-dot"></div>
-        </div>
-        <div class="timeline-item">
-          <div></div>
-          <div class="timeline-content glass reveal" style="padding:1.5rem">
-            <div
-              style="font-family:'JetBrains Mono',monospace;font-size:0.52rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--red);margin-bottom:0.5rem">
-              2024</div>
-            <h3 style="font-weight:700;margin-bottom:0.5rem">First Client</h3>
-            <p style="color:var(--text-dim);font-size:0.85rem;line-height:1.6">Delivered the first professional project.
-              Proof that vision and execution could align perfectly.</p>
+          <div class="glass glass-hover reveal reveal-delay-2" style="padding:2rem">
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--red);margin-bottom:0.75rem">02
+            </div>
+            <h3 style="font-weight:700;margin-bottom:0.75rem">Deep Work</h3>
+            <p style="color:var(--text-dim);font-size:0.85rem;line-height:1.7">The void philosophy: total immersion,
+              distraction elimination, pure creative output. No half-measures.</p>
           </div>
-          <div class="timeline-dot"></div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-content glass reveal" style="padding:1.5rem">
-            <div
-              style="font-family:'JetBrains Mono',monospace;font-size:0.52rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--red);margin-bottom:0.5rem">
-              2025</div>
-            <h3 style="font-weight:700;margin-bottom:0.5rem">10+ Projects</h3>
-            <p style="color:var(--text-dim);font-size:0.85rem;line-height:1.6">A portfolio that speaks for itself.
-              Video, design, and innovation — each project adding a new dimension.</p>
+          <div class="glass glass-hover reveal reveal-delay-3" style="padding:2rem">
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--red);margin-bottom:0.75rem">03
+            </div>
+            <h3 style="font-weight:700;margin-bottom:0.75rem">Always Learning</h3>
+            <p style="color:var(--text-dim);font-size:0.85rem;line-height:1.7">AI, new tools, emerging workflows —
+              curiosity is the only constant. The craft never stops evolving.</p>
           </div>
-          <div class="timeline-dot"></div>
         </div>
-        <div class="timeline-item">
-          <div></div>
-          <div class="timeline-content glass reveal" style="padding:1.5rem">
-            <div
-              style="font-family:'JetBrains Mono',monospace;font-size:0.52rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--red);margin-bottom:0.5rem">
-              2026+</div>
-            <h3 style="font-weight:700;margin-bottom:0.5rem">Building the Future</h3>
-            <p style="color:var(--text-dim);font-size:0.85rem;line-height:1.6">AI integration, global clients, and work
-              that outlives the moment. The story is just getting started.</p>
-          </div>
-          <div class="timeline-dot"></div>
-        </div>
-      </div>
-    </section>
+      </section>
 
-    <section>
-      <div class="section-label reveal"><span>EXPERTISE LEVELS</span></div>
-      <h2 class="section-heading reveal reveal-delay-1" style="margin-bottom:2.5rem">SKILL <span
-          class="red">BREAKDOWN</span></h2>
-      <div class="glass reveal reveal-delay-2" style="padding:2.5rem" id="skills-section">
-        <div class="skill-bar-wrap">
-          <div class="skill-bar-header"><span style="font-size:0.85rem;font-weight:600">Video Editing</span><span
-              style="font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--red)">90%</span></div>
-          <div class="skill-bar-track">
-            <div class="skill-bar-fill" data-width="90%"></div>
+      <section>
+        <div class="section-label reveal"><span>JOURNEY</span></div>
+        <h2 class="section-heading reveal reveal-delay-1" style="margin-bottom:3rem">THE <span
+            class="red">TIMELINE</span>
+        </h2>
+        <div class="timeline">
+          <div class="timeline-line"></div>
+          <div class="timeline-item">
+            <div class="timeline-content glass reveal" style="padding:1.5rem">
+              <div
+                style="font-family:'JetBrains Mono',monospace;font-size:0.52rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--red);margin-bottom:0.5rem">
+                2024</div>
+              <h3 style="font-weight:700;margin-bottom:0.5rem">Started the Journey</h3>
+              <p style="color:var(--text-dim);font-size:0.85rem;line-height:1.6">Took the leap into freelance creative
+                work. The first frame. The first design. The beginning of the autobiography.</p>
+            </div>
+            <div class="timeline-dot"></div>
+          </div>
+          <div class="timeline-item">
+            <div></div>
+            <div class="timeline-content glass reveal" style="padding:1.5rem">
+              <div
+                style="font-family:'JetBrains Mono',monospace;font-size:0.52rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--red);margin-bottom:0.5rem">
+                2024</div>
+              <h3 style="font-weight:700;margin-bottom:0.5rem">First Client</h3>
+              <p style="color:var(--text-dim);font-size:0.85rem;line-height:1.6">Delivered the first professional
+                project.
+                Proof that vision and execution could align perfectly.</p>
+            </div>
+            <div class="timeline-dot"></div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-content glass reveal" style="padding:1.5rem">
+              <div
+                style="font-family:'JetBrains Mono',monospace;font-size:0.52rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--red);margin-bottom:0.5rem">
+                2025</div>
+              <h3 style="font-weight:700;margin-bottom:0.5rem">10+ Projects</h3>
+              <p style="color:var(--text-dim);font-size:0.85rem;line-height:1.6">A portfolio that speaks for itself.
+                Video, design, and innovation — each project adding a new dimension.</p>
+            </div>
+            <div class="timeline-dot"></div>
+          </div>
+          <div class="timeline-item">
+            <div></div>
+            <div class="timeline-content glass reveal" style="padding:1.5rem">
+              <div
+                style="font-family:'JetBrains Mono',monospace;font-size:0.52rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--red);margin-bottom:0.5rem">
+                2026+</div>
+              <h3 style="font-weight:700;margin-bottom:0.5rem">Building the Future</h3>
+              <p style="color:var(--text-dim);font-size:0.85rem;line-height:1.6">AI integration, global clients, and
+                work
+                that outlives the moment. The story is just getting started.</p>
+            </div>
+            <div class="timeline-dot"></div>
           </div>
         </div>
-        <div class="skill-bar-wrap">
-          <div class="skill-bar-header"><span style="font-size:0.85rem;font-weight:600">Graphic Design</span><span
-              style="font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--red)">85%</span></div>
-          <div class="skill-bar-track">
-            <div class="skill-bar-fill" data-width="85%"></div>
-          </div>
-        </div>
-        <div class="skill-bar-wrap">
-          <div class="skill-bar-header"><span style="font-size:0.85rem;font-weight:600">AI Tools</span><span
-              style="font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--red)">80%</span></div>
-          <div class="skill-bar-track">
-            <div class="skill-bar-fill" data-width="80%"></div>
-          </div>
-        </div>
-        <div class="skill-bar-wrap" style="margin-bottom:0">
-          <div class="skill-bar-header"><span style="font-size:0.85rem;font-weight:600">Motion Design</span><span
-              style="font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--red)">75%</span></div>
-          <div class="skill-bar-track">
-            <div class="skill-bar-fill" data-width="75%"></div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
+      </section>
 
-  <!-- WORK PAGE -->
-  <div class="page" id="page-work">
-    <div class="about-hero" style="padding-top:8rem">
-      <div class="section-label reveal"><span>PORTFOLIO</span></div>
-      <h1 class="section-heading reveal reveal-delay-1"
-        style="font-size:clamp(4rem,14vw,10rem);line-height:0.85;margin-bottom:1rem">
-        SELECTED<br><span class="red">WORK.</span>
-      </h1>
-      <p class="reveal reveal-delay-2"
-        style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.4em;text-transform:uppercase;color:var(--text-muted)">
-        Projects that shaped the craft.</p>
+      <section>
+        <div class="section-label reveal"><span>EXPERTISE LEVELS</span></div>
+        <h2 class="section-heading reveal reveal-delay-1" style="margin-bottom:2.5rem">SKILL <span
+            class="red">BREAKDOWN</span></h2>
+        <div class="glass reveal reveal-delay-2" style="padding:2.5rem" id="skills-section">
+          <div class="skill-bar-wrap">
+            <div class="skill-bar-header"><span style="font-size:0.85rem;font-weight:600">Video Editing</span><span
+                style="font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--red)">90%</span></div>
+            <div class="skill-bar-track">
+              <div class="skill-bar-fill" data-width="90%"></div>
+            </div>
+          </div>
+          <div class="skill-bar-wrap">
+            <div class="skill-bar-header"><span style="font-size:0.85rem;font-weight:600">Graphic Design</span><span
+                style="font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--red)">85%</span></div>
+            <div class="skill-bar-track">
+              <div class="skill-bar-fill" data-width="85%"></div>
+            </div>
+          </div>
+          <div class="skill-bar-wrap">
+            <div class="skill-bar-header"><span style="font-size:0.85rem;font-weight:600">AI Tools</span><span
+                style="font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--red)">80%</span></div>
+            <div class="skill-bar-track">
+              <div class="skill-bar-fill" data-width="80%"></div>
+            </div>
+          </div>
+          <div class="skill-bar-wrap" style="margin-bottom:0">
+            <div class="skill-bar-header"><span style="font-size:0.85rem;font-weight:600">Motion Design</span><span
+                style="font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--red)">75%</span></div>
+            <div class="skill-bar-track">
+              <div class="skill-bar-fill" data-width="75%"></div>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
 
-    <section>
-      <div class="filter-tabs reveal" id="filter-tabs" style="margin-bottom:2.5rem">
-        <button class="filter-tab active" data-filter="all">All</button>
-        <button class="filter-tab" data-filter="video">Video</button>
-        <button class="filter-tab" data-filter="design">Design</button>
-        <button class="filter-tab" data-filter="innovation">Innovation</button>
+    <!-- WORK SECTION -->
+    <div id="section-work">
+      <div class="about-hero" style="padding-top:8rem">
+        <div class="section-label reveal"><span>PORTFOLIO</span></div>
+        <h1 class="section-heading reveal reveal-delay-1"
+          style="font-size:clamp(4rem,14vw,10rem);line-height:0.85;margin-bottom:1rem">
+          SELECTED<br><span class="red">WORK.</span>
+        </h1>
+        <p class="reveal reveal-delay-2"
+          style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.4em;text-transform:uppercase;color:var(--text-muted)">
+          Projects that shaped the craft.</p>
       </div>
-      <div class="projects-grid" id="projects-grid"></div>
-    </section>
 
-    <section style="text-align:center;padding-bottom:8rem">
-      <div class="glass reveal" style="padding:3rem;border-radius:2rem">
-        <p class="reveal"
-          style="font-family:'JetBrains Mono',monospace;font-size:0.52rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--red);margin-bottom:1rem">
-          READY TO COLLABORATE?</p>
-        <h2 class="section-heading reveal reveal-delay-1" style="font-size:2.5rem;margin-bottom:1.5rem">LET'S BUILD
-          SOMETHING <span class="red">INDELIBLE.</span></h2>
-        <button class="btn btn-primary reveal reveal-delay-2" onclick="navigate('contact')">INITIATE CONNECTION
-          →</button>
-      </div>
-    </section>
-  </div>
+      <section>
+        <div class="filter-tabs reveal" id="filter-tabs" style="margin-bottom:2.5rem">
+          <button class="filter-tab active" data-filter="all">All</button>
+          <button class="filter-tab" data-filter="video">Video</button>
+          <button class="filter-tab" data-filter="design">Design</button>
+          <button class="filter-tab" data-filter="innovation">Innovation</button>
+        </div>
+        <div class="projects-grid" id="projects-grid"></div>
+      </section>
+
+      <!-- Philosophy -->
+      <section>
+        <div class="chapter-num"></div>
+        <div style="position:relative;z-index:1">
+          <div class="section-label reveal"><span>MY PHILOSOPHY</span></div>
+          <div class="glass philosophy-card reveal reveal-delay-1" style="margin-top:1.5rem">
+            <div class="quote-mark">"</div>
+            <div style="position:relative;z-index:1">
+              <h2 class="section-heading" style="font-size:clamp(2.5rem,6vw,4.5rem);margin-bottom:1.5rem">
+                STAY <span class="red">HUNGRY.</span><br>
+                STAY <span class="red">FOOLISH.</span><br>
+                STAY IN THE VOID.
+              </h2>
+              <p style="max-width:560px;color:var(--text-dim);font-size:0.92rem;line-height:1.85">
+                In the space between what is and what could be, creativity finds its truest form. The void isn't
+                emptiness
+                — it's infinite potential, waiting for the one who dares to reach in.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section style="text-align:center;padding-bottom:8rem">
+        <div class="section-label reveal" style="justify-content:center"><span>GET IN TOUCH</span></div>
+        <h2 class="cta-heading reveal reveal-delay-1">
+          LET'S MAKE<br>THE <span class="gradient-text">HISTORY.</span>
+        </h2>
+        <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:2.5rem"
+          class="reveal reveal-delay-2">
+          <button class="btn btn-primary" onclick="navigate('contact')">INITIATE CONNECTION →</button>
+          <a class="btn btn-outline" href="cv.pdf" download>KNOW MORE (CV) ↓</a>
+        </div>
+        <div class="social-links reveal reveal-delay-3" style="justify-content:center">
+          <a href="https://github.com/tasnimullah" target="_blank" class="social-link">Github</a>
+          <a href="https://www.linkedin.com/in/tasnim-ullah/" target="_blank" class="social-link">LinkedIn</a>
+          <a href="https://x.com/Tasnimullah5" target="_blank" class="social-link">X.com</a>
+          <a href="https://www.facebook.com/tsnm.u1" target="_blank" class="social-link">Facebook</a>
+        </div>
+      </section>
+    </div>
+  </div> <!-- END MAIN VIEW -->
 
   <!-- CONTACT PAGE -->
   <div class="page" id="page-contact">
@@ -1807,26 +1766,21 @@
             <div class="reveal reveal-delay-1">
               <!-- Web3Forms hidden fields -->
               <input type="hidden" id="f-access-key" value="f6f17d8b-1e90-4a9e-93a2-e329f50c031d">
-              <div style="display:none">
-                <input type="text" id="f-honeypot" tabindex="-1" autocomplete="off">
+              <div class="form-field">
+                <label class="form-label">Name</label>
+                <input type="text" class="form-input" id="f-name" placeholder="Your name">
               </div>
               <div class="form-field">
-                <label class="form-label" for="f-name">Name</label>
-                <input type="text" class="form-input" id="f-name" name="name" placeholder="Your name" required>
+                <label class="form-label">Email</label>
+                <input type="email" class="form-input" id="f-email" placeholder="your@email.com">
               </div>
               <div class="form-field">
-                <label class="form-label" for="f-email">Email</label>
-                <input type="email" class="form-input" id="f-email" name="email" placeholder="your@email.com" required>
+                <label class="form-label">Subject</label>
+                <input type="text" class="form-input" id="f-subject" placeholder="What's this about?">
               </div>
               <div class="form-field">
-                <label class="form-label" for="f-subject">Subject</label>
-                <input type="text" class="form-input" id="f-subject" name="subject" placeholder="What's this about?"
-                  required>
-              </div>
-              <div class="form-field">
-                <label class="form-label" for="f-message">Message</label>
-                <textarea class="form-input" id="f-message" name="message" placeholder="Tell me about your project..."
-                  required></textarea>
+                <label class="form-label">Message</label>
+                <textarea class="form-input" id="f-message" placeholder="Tell me about your project..."></textarea>
               </div>
               <div id="form-error"
                 style="color:var(--red);font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.15em;margin-bottom:1rem;display:none">
@@ -1934,15 +1888,25 @@
     // ---- NAVIGATION ----
     let currentPage = 'home';
     function navigate(page) {
-      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-      document.getElementById('page-' + page).classList.add('active');
       document.querySelectorAll('.nav-links a').forEach(a => {
         a.classList.toggle('active', a.dataset.page === page);
       });
       currentPage = page;
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (page === 'work') renderProjects('all');
-      if (page === 'about') setTimeout(animateSkillBars, 400);
+
+      if (page === 'contact') {
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        document.getElementById('page-contact').classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        document.getElementById('page-main').classList.add('active');
+        const targetSection = document.getElementById('section-' + page);
+        if (targetSection) {
+          setTimeout(() => {
+            targetSection.scrollIntoView({ behavior: 'smooth' });
+          }, 10);
+        }
+      }
       initReveal();
     }
 
@@ -1958,7 +1922,9 @@
     }
 
     gateBtn.addEventListener('click', () => {
-      gateBtn.textContent = 'Unlocking…';
+      gateBtn.classList.add('loading');
+      const btnText = gateBtn.querySelector('.btn-text');
+      if (btnText) btnText.textContent = 'Unlocking…';
       progress.style.width = '100%';
       setTimeout(() => {
         gate.classList.add('exit');
@@ -2036,9 +2002,14 @@
     // ---- HAMBURGER ----
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobile-menu');
-    hamburger.addEventListener('click', () => mobileMenu.classList.add('open'));
-    document.getElementById('mobile-close').addEventListener('click', () => mobileMenu.classList.remove('open'));
-    function closeMobileMenu() { mobileMenu.classList.remove('open'); }
+    hamburger.addEventListener('click', () => {
+      mobileMenu.classList.toggle('open');
+      hamburger.classList.toggle('active');
+    });
+    function closeMobileMenu() {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('active');
+    }
 
     // ---- REVEAL ON SCROLL ----
     function initReveal() {
@@ -2114,29 +2085,20 @@
       renderProjects(btn.dataset.filter);
     });
 
-    // ---- CONTACT FORM (Web3Forms Integration) ----
+    // Initialize work section projects
+    renderProjects('all');
+
+    // ---- CONTACT FORM ----
     async function submitForm() {
       const name = document.getElementById('f-name').value.trim();
       const email = document.getElementById('f-email').value.trim();
       const subject = document.getElementById('f-subject').value.trim();
       const message = document.getElementById('f-message').value.trim();
-      const honeypot = document.getElementById('f-honeypot').value;
       const errEl = document.getElementById('form-error');
       const btn = document.getElementById('submit-btn');
-
-      // Spam check
-      if (honeypot) return;
-
       if (!name || !email || !subject || !message) {
         errEl.textContent = 'All fields are required.'; errEl.style.display = 'block'; return;
       }
-
-      // Basic email validation
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(email)) {
-        errEl.textContent = 'Please enter a valid email address.'; errEl.style.display = 'block'; return;
-      }
-
       errEl.style.display = 'none';
       btn.textContent = 'SENDING…'; btn.disabled = true;
 
@@ -2162,9 +2124,9 @@
           throw new Error(result.message || 'Submission failed');
         }
       } catch (error) {
-        errEl.textContent = 'Failed to send. Please email me directly at tasnimullah910@gmail.com';
+        errEl.textContent = 'Error: ' + error.message;
         errEl.style.display = 'block';
-        btn.textContent = 'SEND MESSAGE →';
+        btn.textContent = 'SEND MESSAGE →'; 
         btn.disabled = false;
       }
     }

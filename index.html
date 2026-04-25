@@ -6,9 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- PRIMARY META -->
   <title>Tasnim Ullah - Designer · Dreamer · Devoter | Portfolio</title>
-  <meta name="description" content="Portfolio of Tasnim Ullah - a creative designer, video creator, and digital innovator from Bangladesh. Specializing in cinematic storytelling, brand identity, and AI-powered workflows.">
+  <meta name="description"
+    content="Portfolio of Tasnim Ullah - a creative designer, video creator, and digital innovator from Bangladesh. Specializing in cinematic storytelling, brand identity, and AI-powered workflows.">
   <meta name="author" content="Tasnim Ullah">
-  <meta name="keywords" content="Tasnim Ullah, portfolio, designer, video creator, DaVinci Resolve, brand identity, motion design, AI integration, Bangladesh, freelance">
+  <meta name="keywords"
+    content="Tasnim Ullah, portfolio, designer, video creator, DaVinci Resolve, brand identity, motion design, AI integration, Bangladesh, freelance">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -1304,6 +1306,281 @@
         padding: 0.85rem 2rem
       }
     }
+
+    /* =========================================
+       3D FOLDER COMPONENT
+    ========================================= */
+    .folder-container { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2rem; border-radius: 12px; cursor: pointer; background: var(--bg-card); border: 1px solid var(--border); transition: all 0.5s ease-out; min-height: 350px; perspective: 1000px; width: 100%; }
+    .folder-container:hover { box-shadow: 0 20px 40px rgba(255, 26, 26, 0.1); border-color: var(--border-red); }
+    .folder-glow { position: absolute; inset: 0; border-radius: 12px; background: radial-gradient(circle at 50% 70%, rgba(255, 26, 26, 0.15) 0%, transparent 70%); opacity: 0; transition: opacity 0.5s; pointer-events: none; }
+    .folder-container:hover .folder-glow { opacity: 1; }
+    .folder-scene { position: relative; height: 160px; width: 200px; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; }
+    .folder-back, .folder-front, .folder-tab { position: absolute; transform-origin: bottom center; transition: transform 500ms cubic-bezier(0.34, 1.56, 0.64, 1); }
+    .folder-back { width: 128px; height: 96px; background: var(--red); border-radius: 8px; z-index: 10; }
+    .folder-tab { width: 48px; height: 16px; background: #cc0000; border-radius: 6px 6px 0 0; top: calc(50% - 48px - 12px); left: calc(50% - 64px + 16px); z-index: 10; }
+    .folder-front { width: 128px; height: 96px; background: #222; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; top: calc(50% - 48px + 4px); z-index: 30; box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
+    .folder-container:hover .folder-back { transform: rotateX(-15deg); }
+    .folder-container:hover .folder-tab { transform: rotateX(-25deg) translateY(-2px); }
+    .folder-container:hover .folder-front { transform: rotateX(25deg) translateY(8px); }
+    .folder-projects { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 20; }
+    .folder-project-card { position: absolute; width: 80px; height: 112px; border-radius: 8px; overflow: hidden; background: #0d0d0d; border: 1px solid #333; transition: all 600ms cubic-bezier(0.34, 1.56, 0.64, 1); left: -40px; top: -56px; opacity: 0; transform: translateY(0px) translateX(0px) rotate(0deg) scale(0.5); }
+    .folder-project-card img { width: 100%; height: 100%; object-fit: cover; }
+    .folder-container:hover .folder-project-card.card-1 { opacity: 1; transform: translateY(-90px) translateX(-55px) rotate(-12deg) scale(1); transition-delay: 0ms; }
+    .folder-container:hover .folder-project-card.card-2 { opacity: 1; transform: translateY(-90px) translateX(0px) rotate(0deg) scale(1); transition-delay: 80ms; }
+    .folder-container:hover .folder-project-card.card-3 { opacity: 1; transform: translateY(-90px) translateX(55px) rotate(12deg) scale(1); transition-delay: 160ms; }
+    .folder-title { font-family: 'Syne', sans-serif; font-size: 1.25rem; font-weight: 600; color: #fff; margin-top: 1rem; transition: transform 0.3s; }
+    .folder-container:hover .folder-title { transform: translateY(4px); }
+    .folder-count { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--text-dim); margin-top: 4px; transition: opacity 0.3s; }
+    .folder-container:hover .folder-count { opacity: 0.7; }
+    .folder-hint { position: absolute; bottom: 1.5rem; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-dim); opacity: 0; transform: translateY(10px); transition: all 0.3s; }
+    .folder-container:hover .folder-hint { opacity: 1; transform: translateY(0); }
+
+/* =========================================
+   3D CARD STACK COMPONENT
+========================================= */
+#featured-card-stack {
+  position: relative;
+  width: 100%;
+  padding: 0 0 2.5rem;
+  margin-bottom: 4rem;
+}
+
+.card-stack-label {
+  margin-bottom: 2rem;
+}
+
+.card-stack-stage-wrap {
+  position: relative;
+  width: 100%;
+  height: 420px;
+  perspective: 1100px;
+}
+
+.card-stack-stage-wrap::before {
+  content: '';
+  position: absolute;
+  top: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+  height: 12rem;
+  background: rgba(255, 26, 26, 0.04);
+  border-radius: 50%;
+  filter: blur(40px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.card-stack-stage-wrap::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 76%;
+  height: 10rem;
+  background: rgba(0, 0, 0, 0.45);
+  border-radius: 50%;
+  filter: blur(40px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.card-stack-stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  transform-style: preserve-3d;
+}
+
+.cs-card {
+  position: absolute;
+  bottom: 0;
+  width: 520px;
+  height: 320px;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+  background: var(--bg-card);
+  backdrop-filter: blur(28px) saturate(160%);
+  will-change: transform, opacity;
+  transform-style: preserve-3d;
+  transform-origin: bottom center;
+  transition:
+    transform 0.55s cubic-bezier(0.23, 1, 0.32, 1),
+    opacity 0.55s cubic-bezier(0.23, 1, 0.32, 1),
+    border-color 0.3s ease;
+  user-select: none;
+}
+
+.cs-card.is-active {
+  cursor: grab;
+  border-color: rgba(255, 26, 26, 0.18);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,26,26,0.2);
+}
+
+.cs-card.is-active:active {
+  cursor: grabbing;
+}
+
+.cs-card.is-inactive {
+  cursor: pointer;
+}
+
+.cs-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.cs-card-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cs-card-no-img {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(20, 5, 5, 0.8);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.cs-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.1) 55%, transparent 100%);
+  pointer-events: none;
+}
+
+.cs-card-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.25rem 1.4rem;
+  z-index: 2;
+}
+
+.cs-card-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.48rem;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 0.35rem;
+}
+
+.cs-card-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cs-card-desc {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem;
+  color: rgba(255,255,255,0.72);
+  margin-top: 0.3rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card-stack-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  margin-top: 1.5rem;
+}
+
+.cs-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.25);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.3s, transform 0.3s;
+  outline: none;
+}
+
+.cs-dot:hover {
+  background: rgba(255,255,255,0.5);
+}
+
+.cs-dot.active {
+  background: var(--red);
+  transform: scale(1.25);
+  box-shadow: 0 0 8px var(--red-glow);
+}
+
+.card-stack-arrows {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+  justify-content: center;
+}
+
+.cs-arrow {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.25s, border-color 0.25s, color 0.25s;
+  font-size: 0.85rem;
+}
+
+.cs-arrow:hover {
+  background: var(--red-dim);
+  border-color: var(--border-red);
+  color: #fff;
+}
+
+@media (max-width: 600px) {
+  .cs-card {
+    width: min(88vw, 360px);
+    height: 220px;
+  }
+  .card-stack-stage-wrap {
+    height: 300px;
+  }
+}
+.hero-name { cursor: default; }
+.hover-char {
+  display: inline-block;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  will-change: transform, filter;
+}
   </style>
 </head>
 
@@ -1360,8 +1637,8 @@
       <!-- Hero -->
       <div class="hero" style="min-height:100vh;position:relative">
         <div class="hero-name">
-          <span>TASNIM</span><br>
-          <span class="red">ULLAH.</span>
+          <div id="hover-line-1">TASNIM</div>
+          <div id="hover-line-2">ULLAH.</div>
         </div>
         <p class="hero-subtitle">Designer · Dreamer · Devoter</p>
         <div class="scroll-cue">
@@ -1393,20 +1670,23 @@
             </div>
           </div>
           <div class="reveal reveal-delay-3" id="origin-deco"
-            style="display:flex;align-items:center;justify-content:center">
-            <div
-              style="width:260px;height:260px;border:1px dashed rgba(255,26,26,0.35);border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(255,26,26,0.03)">
-              <svg width="80" height="80" viewBox="0 0 80 80" fill="none" opacity="0.28">
-                <rect x="10" y="10" width="24" height="24" rx="4" stroke="#ff1a1a" stroke-width="1.5" />
-                <rect x="46" y="10" width="24" height="24" rx="4" stroke="#ff1a1a" stroke-width="1.5" />
-                <rect x="10" y="46" width="24" height="24" rx="4" stroke="#ff1a1a" stroke-width="1.5" />
-                <rect x="46" y="46" width="24" height="24" rx="4" stroke="#ff1a1a" stroke-width="1.5" />
-                <line x1="22" y1="34" x2="22" y2="46" stroke="#ff1a1a" stroke-width="1" />
-                <line x1="58" y1="34" x2="58" y2="46" stroke="#ff1a1a" stroke-width="1" />
-                <line x1="34" y1="22" x2="46" y2="22" stroke="#ff1a1a" stroke-width="1" />
-                <line x1="34" y1="58" x2="46" y2="58" stroke="#ff1a1a" stroke-width="1" />
-              </svg>
-            </div>
+            style="display:flex;align-items:center;justify-content:center;width:100%;">
+            <article class="folder-container">
+              <div class="folder-glow"></div>
+              <div class="folder-scene">
+                <div class="folder-back"></div>
+                <div class="folder-tab"></div>
+                <div class="folder-projects">
+                  <div class="folder-project-card card-1"><img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=200&auto=format&fit=crop" alt="Project 1"></div>
+                  <div class="folder-project-card card-2"><img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=200&auto=format&fit=crop" alt="Project 2"></div>
+                  <div class="folder-project-card card-3"><img src="https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=200&auto=format&fit=crop" alt="Project 3"></div>
+                </div>
+                <div class="folder-front"></div>
+              </div>
+              <h3 class="folder-title">Branding Projects</h3>
+              <p class="folder-count">3 projects</p>
+              <div class="folder-hint">Hover to explore</div>
+            </article>
           </div>
         </div>
       </section>
@@ -1691,6 +1971,20 @@
           Projects that shaped the craft.</p>
       </div>
 
+      <!-- ===== 3D CARD STACK ===== -->
+      <section id="featured-card-stack">
+        <div class="section-label reveal card-stack-label"><span>FEATURED WORK</span></div>
+        <div class="card-stack-stage-wrap" id="cs-stage-wrap">
+          <div class="card-stack-stage" id="cs-stage"></div>
+        </div>
+        <div class="card-stack-dots" id="cs-dots"></div>
+        <div class="card-stack-arrows">
+          <button class="cs-arrow" id="cs-prev" aria-label="Previous">&#8592;</button>
+          <button class="cs-arrow" id="cs-next" aria-label="Next">&#8594;</button>
+        </div>
+      </section>
+      <!-- ===== END CARD STACK ===== -->
+
       <section>
         <div class="filter-tabs reveal" id="filter-tabs" style="margin-bottom:2.5rem">
           <button class="filter-tab active" data-filter="all">All</button>
@@ -1964,6 +2258,39 @@
     }
     animateParticles();
 
+// ---- LETTER HOVER ----
+(function(){
+  function initLetterHover(el, isRedLine) {
+    const original = el.innerText;
+    el.innerHTML = '';
+    const chars = original.split('').map(ch => {
+      const s = document.createElement('span');
+      s.className = 'hover-char';
+      s.innerText = ch === ' ' ? '\u00A0' : ch;
+      s.style.color = isRedLine ? 'var(--red)' : 'inherit';
+      el.appendChild(s);
+      return s;
+    });
+    function update(idx) {
+      chars.forEach((c, i) => {
+        const d = idx === -1 ? 99 : Math.abs(i - idx);
+        let sc=1,ty=0,rx=0,br=1,tz=0,zi=1,col=isRedLine ? 'var(--red)' : 'inherit';
+        if(d===0){sc=1.4;ty=-20;rx=-15;br=1.3;tz=30;zi=10;col=isRedLine?'#fff':'inherit';}
+        else if(d===1){sc=1.2;ty=-10;rx=-8;br=1.15;tz=15;zi=5;}
+        else if(d===2){sc=1.1;ty=-5;rx=-4;br=1.08;tz=15;zi=2;}
+        c.style.transform=`perspective(1000px) translateY(${ty}px) rotateX(${rx}deg) scale(${sc}) translateZ(${tz}px)`;
+        c.style.filter=`brightness(${br})`;
+        c.style.zIndex=zi;
+        c.style.color=col;
+      });
+    }
+    chars.forEach((c,i)=>c.addEventListener('mouseenter',()=>update(i)));
+    el.addEventListener('mouseleave',()=>update(-1));
+  }
+  initLetterHover(document.getElementById('hover-line-1'), false);
+  initLetterHover(document.getElementById('hover-line-2'), true);
+})();
+
     // ---- BG VOID ----
     const bgVoid = document.getElementById('bg-void');
     document.addEventListener('mousemove', e => {
@@ -2126,10 +2453,256 @@
       } catch (error) {
         errEl.textContent = 'Error: ' + error.message;
         errEl.style.display = 'block';
-        btn.textContent = 'SEND MESSAGE →'; 
+        btn.textContent = 'SEND MESSAGE →';
         btn.disabled = false;
       }
     }
+
+// =========================================
+// 3D CARD STACK
+// =========================================
+(function () {
+  const csItems = [
+    {
+      id: 1,
+      tag: 'Video',
+      title: 'Cinematic Brand Film',
+      description: 'A 3-min brand story for a local fashion label, color graded with a signature desaturated-warm aesthetic.',
+      imageSrc: 'https://images.unsplash.com/photo-1536240478700-b869ad10e128?q=80&w=800&auto=format&fit=crop',
+      href: '#'
+    },
+    {
+      id: 2,
+      tag: 'Design',
+      title: 'Logo & Identity System',
+      description: 'Complete visual identity — logo, type system, color palette & usage guidelines.',
+      imageSrc: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop',
+      href: '#'
+    },
+    {
+      id: 3,
+      tag: 'Innovation',
+      title: 'AI Content Pipeline',
+      description: 'Automated content workflow integrating AI to produce social assets at scale.',
+      imageSrc: 'https://images.unsplash.com/photo-1677442135703-1787eea5ce01?q=80&w=800&auto=format&fit=crop',
+      href: '#'
+    },
+    {
+      id: 4,
+      tag: 'Video',
+      title: 'Documentary Short',
+      description: 'A 12-minute doc on Dhaka street art with dynamic interviews & kinetic typography.',
+      imageSrc: 'https://images.unsplash.com/photo-1574717024368-4a2b6f7b3177?q=80&w=800&auto=format&fit=crop',
+      href: '#'
+    },
+    {
+      id: 5,
+      tag: 'Design',
+      title: 'Portfolio UI Concept',
+      description: 'Dark brutalist design system with glassmorphism, red-black palette & micro-interactions.',
+      imageSrc: 'https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=800&auto=format&fit=crop',
+      href: '#'
+    },
+  ];
+
+  const CARD_W = 520;
+  const CARD_H = 320;
+  const MAX_OFFSET = 3;
+  const OVERLAP = 0.48;
+  const SPREAD_DEG = 48;
+  const DEPTH_PX = 140;
+  const TILT_X_DEG = 12;
+  const ACTIVE_LIFT_PX = 22;
+  const ACTIVE_SCALE = 1.03;
+  const INACTIVE_SCALE = 0.94;
+  const INTERVAL_MS = 2800;
+  const DRAG_THRESHOLD = 120;
+
+  const stage = document.getElementById('cs-stage');
+  const dotsWrap = document.getElementById('cs-dots');
+  const stageWrap = document.getElementById('cs-stage-wrap');
+
+  let activeIdx = 0;
+  let hovering = false;
+  let autoTimer = null;
+  const len = csItems.length;
+
+  function wrapIdx(n) { return ((n % len) + len) % len; }
+
+  function signedOffset(i, active) {
+    const raw = i - active;
+    const alt = raw > 0 ? raw - len : raw + len;
+    return Math.abs(alt) < Math.abs(raw) ? alt : raw;
+  }
+
+  const cardEls = [];
+  csItems.forEach((item) => {
+    const card = document.createElement('div');
+    card.className = 'cs-card';
+    card.innerHTML = `
+      <div class="cs-card-inner">
+        ${item.imageSrc
+          ? `<img class="cs-card-img" src="${item.imageSrc}" alt="${item.title}" draggable="false">`
+          : `<div class="cs-card-no-img">No Image</div>`}
+        <div class="cs-card-overlay"></div>
+        <div class="cs-card-content">
+          ${item.tag ? `<div class="cs-card-tag">${item.tag}</div>` : ''}
+          <div class="cs-card-title">${item.title}</div>
+          ${item.description ? `<div class="cs-card-desc">${item.description}</div>` : ''}
+        </div>
+      </div>`;
+    stage.appendChild(card);
+    cardEls.push(card);
+  });
+
+  const dotEls = csItems.map((item, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'cs-dot';
+    dot.setAttribute('aria-label', `Go to ${item.title}`);
+    dot.addEventListener('click', () => setActive(i));
+    dotsWrap.appendChild(dot);
+    return dot;
+  });
+
+  document.getElementById('cs-prev').addEventListener('click', prev);
+  document.getElementById('cs-next').addEventListener('click', next);
+
+  function applyTransforms() {
+    const isMobileSmall = window.innerWidth <= 600;
+    const cw = isMobileSmall ? Math.min(window.innerWidth * 0.88, 360) : CARD_W;
+    const ch = isMobileSmall ? 220 : CARD_H;
+    const spacing = Math.round(cw * (1 - OVERLAP));
+
+    cardEls.forEach((card, i) => {
+      const off = signedOffset(i, activeIdx);
+      const abs = Math.abs(off);
+      const visible = abs <= MAX_OFFSET;
+
+      if (!visible) {
+        card.style.opacity = '0';
+        card.style.pointerEvents = 'none';
+        card.style.zIndex = '0';
+        return;
+      }
+
+      const isActive = off === 0;
+      const rotateZ = off * (SPREAD_DEG / MAX_OFFSET);
+      const tx = off * spacing;
+      const ty = abs * 10 + (isActive ? -ACTIVE_LIFT_PX : 0);
+      const tz = -abs * DEPTH_PX;
+      const rotateX = isActive ? 0 : TILT_X_DEG;
+      const scale = isActive ? ACTIVE_SCALE : INACTIVE_SCALE;
+
+      card.style.width = cw + 'px';
+      card.style.height = ch + 'px';
+      card.style.zIndex = 100 - abs;
+      card.style.opacity = '1';
+      card.style.pointerEvents = 'auto';
+      card.style.transform = `
+        translateX(${tx}px)
+        translateY(${ty}px)
+        translateZ(${tz}px)
+        rotateZ(${rotateZ}deg)
+        rotateX(${rotateX}deg)
+        scale(${scale})
+      `;
+
+      card.classList.toggle('is-active', isActive);
+      card.classList.toggle('is-inactive', !isActive);
+    });
+
+    dotEls.forEach((dot, i) => {
+      dot.classList.toggle('active', i === activeIdx);
+    });
+  }
+
+  function setActive(idx) {
+    activeIdx = wrapIdx(idx);
+    applyTransforms();
+    attachDrag();
+  }
+
+  function next() { setActive(activeIdx + 1); }
+  function prev() { setActive(activeIdx - 1); }
+
+  cardEls.forEach((card, i) => {
+    card.addEventListener('click', () => {
+      if (i !== activeIdx && Math.abs(signedOffset(i, activeIdx)) <= MAX_OFFSET) {
+        setActive(i);
+      }
+    });
+  });
+
+  let dragStartX = null;
+  let dragging = false;
+
+  function attachDrag() {
+    cardEls.forEach((card) => { card.onpointerdown = null; });
+
+    const active = cardEls[activeIdx];
+    if (!active) return;
+
+    active.onpointerdown = (e) => {
+      if (e.button !== 0 && e.pointerType === 'mouse') return;
+      dragStartX = e.clientX;
+      dragging = true;
+      active.setPointerCapture(e.pointerId);
+
+      active.onpointermove = (ev) => {
+        if (!dragging) return;
+        const dx = ev.clientX - dragStartX;
+        active.style.transform = active.style.transform.replace(
+          /translateX\([^)]+\)/,
+          `translateX(${dx}px)`
+        );
+      };
+
+      active.onpointerup = (ev) => {
+        if (!dragging) return;
+        dragging = false;
+        active.onpointermove = null;
+        active.onpointerup = null;
+        const dx = ev.clientX - dragStartX;
+        applyTransforms();
+        if (dx > DRAG_THRESHOLD) prev();
+        else if (dx < -DRAG_THRESHOLD) next();
+        dragStartX = null;
+      };
+
+      active.onpointercancel = () => {
+        dragging = false;
+        active.onpointermove = null;
+        active.onpointerup = null;
+        applyTransforms();
+        dragStartX = null;
+      };
+    };
+  }
+
+  function startAuto() {
+    stopAuto();
+    autoTimer = setInterval(() => { if (!hovering) next(); }, INTERVAL_MS);
+  }
+
+  function stopAuto() {
+    if (autoTimer) { clearInterval(autoTimer); autoTimer = null; }
+  }
+
+  stageWrap.addEventListener('mouseenter', () => { hovering = true; });
+  stageWrap.addEventListener('mouseleave', () => { hovering = false; });
+
+  stageWrap.setAttribute('tabindex', '0');
+  stageWrap.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') prev();
+    if (e.key === 'ArrowRight') next();
+  });
+
+  window.addEventListener('resize', applyTransforms);
+
+  applyTransforms();
+  attachDrag();
+  startAuto();
+})();
 
     // ---- MOBILE ORIGIN GRID ----
     function checkMobile() {

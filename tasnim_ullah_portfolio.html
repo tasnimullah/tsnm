@@ -1,0 +1,2052 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tasnim Ullah — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    :root {
+      --red: #ff1a1a;
+      --red-dim: rgba(255, 26, 26, 0.14);
+      --red-glow: rgba(255, 26, 26, 0.5);
+      --red-deep: #3a0000;
+      --bg: #050505;
+      --bg-card: rgba(12, 5, 5, 0.55);
+      --border: rgba(255, 255, 255, 0.055);
+      --border-red: rgba(255, 26, 26, 0.2);
+      --text-muted: rgba(255, 255, 255, 0.38);
+      --text-dim: rgba(255, 255, 255, 0.65);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden
+    }
+
+    body {
+      background: var(--bg);
+      color: #fff;
+      font-family: 'Syne', sans-serif;
+      overflow-x: hidden;
+      min-height: 100vh
+    }
+
+    ::-webkit-scrollbar {
+      width: 3px
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: rgba(255, 26, 26, 0.4);
+      border-radius: 99px
+    }
+
+    .font-display {
+      font-family: 'Bebas Neue', sans-serif
+    }
+
+    .font-mono {
+      font-family: 'JetBrains Mono', monospace
+    }
+
+    /* BG EFFECTS */
+    #bg-void {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background: radial-gradient(600px circle at var(--mx, 50%) var(--my, 50%), var(--red-deep), transparent 70%);
+      transition: background 0.1s
+    }
+
+    #bg-ambient {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0
+    }
+
+    #bg-ambient::before {
+      content: '';
+      position: absolute;
+      bottom: -20%;
+      left: -10%;
+      width: 60%;
+      height: 60%;
+      background: radial-gradient(ellipse, rgba(58, 0, 0, 0.35), transparent 70%);
+      border-radius: 50%
+    }
+
+    #bg-ambient::after {
+      content: '';
+      position: absolute;
+      top: -20%;
+      right: -10%;
+      width: 50%;
+      height: 50%;
+      background: radial-gradient(ellipse, rgba(80, 0, 0, 0.2), transparent 70%);
+      border-radius: 50%
+    }
+
+    #grain {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.032;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      animation: grain .75s steps(1) infinite
+    }
+
+    @keyframes grain {
+      0% {
+        background-position: 0 0
+      }
+
+      12.5% {
+        background-position: -5% -10%
+      }
+
+      25% {
+        background-position: -15% 5%
+      }
+
+      37.5% {
+        background-position: 7% -25%
+      }
+
+      50% {
+        background-position: -5% 15%
+      }
+
+      62.5% {
+        background-position: 15% 35%
+      }
+
+      75% {
+        background-position: -20% 10%
+      }
+
+      87.5% {
+        background-position: 10% -20%
+      }
+
+      100% {
+        background-position: 0 0
+      }
+    }
+
+    #scanlines {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.016;
+      background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255, 255, 255, 0.3) 2px, rgba(255, 255, 255, 0.3) 3px)
+    }
+
+    canvas#particles {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0
+    }
+
+    /* CURSOR */
+    #cursor-dot {
+      position: fixed;
+      width: 13px;
+      height: 13px;
+      background: #fff;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      mix-blend-mode: difference;
+      transform: translate(-50%, -50%);
+      transition: transform 0.15s;
+      top: 0;
+      left: 0
+    }
+
+    #cursor-ring {
+      position: fixed;
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--red-glow);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%, -50%);
+      top: 0;
+      left: 0;
+      transition: width 0.3s, height 0.3s, border-color 0.3s
+    }
+
+    body.cursor-hover #cursor-dot {
+      transform: translate(-50%, -50%) scale(2.4)
+    }
+
+    body.cursor-hover #cursor-ring {
+      width: 58px;
+      height: 58px
+    }
+
+    /* NAVBAR */
+    #navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 1.1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.4s, backdrop-filter 0.4s, border-color 0.4s;
+      border-bottom: 1px solid transparent
+    }
+
+    #navbar.scrolled {
+      background: rgba(5, 5, 5, 0.85);
+      backdrop-filter: blur(20px);
+      border-color: var(--border)
+    }
+
+    .nav-monogram {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      color: #fff;
+      text-decoration: none;
+      letter-spacing: 0.08em
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.2rem;
+      align-items: center
+    }
+
+    .nav-links a {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.56rem;
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-decoration: none;
+      position: relative;
+      transition: color 0.25s;
+      padding-bottom: 3px
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--red);
+      transition: width 0.3s
+    }
+
+    .nav-links a:hover {
+      color: rgba(255, 80, 80, 0.9)
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      width: 100%
+    }
+
+    .nav-links a.active {
+      color: rgba(255, 80, 80, 0.9)
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px
+    }
+
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: #fff;
+      transition: all 0.3s
+    }
+
+    #mobile-menu {
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 5, 5, 0.97);
+      z-index: 200;
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 2.5rem;
+      backdrop-filter: blur(20px)
+    }
+
+    #mobile-menu.open {
+      display: flex
+    }
+
+    #mobile-menu a {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3.5rem;
+      color: #fff;
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      transition: color 0.25s
+    }
+
+    #mobile-menu a:hover {
+      color: var(--red)
+    }
+
+    #mobile-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 2rem;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 2rem;
+      cursor: pointer;
+      line-height: 1
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      position: relative;
+      z-index: 10
+    }
+
+    .footer-mono {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.55rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--text-muted)
+    }
+
+    .footer-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.2rem;
+      color: rgba(255, 255, 255, 0.2)
+    }
+
+    /* PAGES */
+    .page {
+      display: none;
+      min-height: 100vh;
+      position: relative;
+      z-index: 10
+    }
+
+    .page.active {
+      display: block
+    }
+
+    /* LANDING GATE */
+    #gate {
+      position: fixed;
+      inset: 0;
+      z-index: 500;
+      background: #000;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transition: opacity 1s ease, transform 1s ease
+    }
+
+    #gate.exit {
+      opacity: 0;
+      transform: scale(1.1);
+      pointer-events: none
+    }
+
+    #gate.gone {
+      display: none
+    }
+
+    .gate-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.8rem, 11vw, 8rem);
+      line-height: 0.88;
+      text-align: center;
+      position: relative;
+      z-index: 2
+    }
+
+    .gate-spotlight {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, var(--red-deep), transparent 70%);
+      border-radius: 50%;
+      filter: blur(100px);
+      animation: fadeUp 1s ease forwards
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
+
+    .gate-btn {
+      margin-top: 3rem;
+      padding: 1rem 2.5rem;
+      border: 1px solid rgba(255, 26, 26, 0.7);
+      background: rgba(255, 26, 26, 0.05);
+      backdrop-filter: blur(10px);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #fff;
+      cursor: pointer;
+      border-radius: 99px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s;
+      z-index: 2
+    }
+
+    .gate-btn:hover {
+      background: rgba(255, 26, 26, 0.15)
+    }
+
+    .gate-progress {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 2px;
+      background: var(--red);
+      width: 0;
+      transition: width 1s linear
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 5rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative
+    }
+
+    .section-full {
+      max-width: none;
+      padding-left: 2rem;
+      padding-right: 2rem
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 2rem
+    }
+
+    .hero-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(5rem, 20vw, 17rem);
+      line-height: 0.82;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.3s ease forwards
+    }
+
+    .hero-name span.red {
+      color: var(--red)
+    }
+
+    .hero-subtitle {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.58rem;
+      letter-spacing: 0.55em;
+      text-transform: uppercase;
+      color: rgba(255, 80, 80, 0.7);
+      margin-top: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.6s ease forwards
+    }
+
+    .scroll-cue {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      animation: bob 2s ease-in-out infinite
+    }
+
+    @keyframes bob {
+
+      0%,
+      100% {
+        transform: translateX(-50%) translateY(0)
+      }
+
+      50% {
+        transform: translateX(-50%) translateY(-8px)
+      }
+    }
+
+    .scroll-cue-line {
+      width: 1px;
+      height: 3.5rem;
+      background: var(--red)
+    }
+
+    .scroll-cue-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.48rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--text-muted)
+    }
+
+    /* GLASS CARD */
+    .glass {
+      background: var(--bg-card);
+      backdrop-filter: blur(28px) saturate(160%);
+      border: 1px solid var(--border);
+      border-top: 1px solid var(--border-red);
+      border-radius: 1.25rem;
+      box-shadow: 0 4px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+      transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s
+    }
+
+    .glass.hover:hover,
+    .glass-hover:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 16px 60px rgba(0, 0, 0, 0.6), 0 0 30px rgba(255, 26, 26, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.07);
+      border-color: rgba(255, 26, 26, 0.35)
+    }
+
+    /* SECTION LABEL */
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem
+    }
+
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--red)
+    }
+
+    .section-label span {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.52rem;
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      color: var(--red)
+    }
+
+    /* CHAPTER HEADING */
+    .chapter-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(4rem, 12vw, 10rem);
+      color: rgba(255, 26, 26, 0.08);
+      line-height: 1;
+      position: absolute;
+      top: -1rem;
+      left: -1rem;
+      pointer-events: none;
+      z-index: 0
+    }
+
+    .section-heading {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 7vw, 5rem);
+      line-height: 0.92;
+      position: relative;
+      z-index: 1
+    }
+
+    .section-heading .red {
+      color: var(--red)
+    }
+
+    /* STATS */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem
+    }
+
+    .stat-value {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3.5rem;
+      background: linear-gradient(135deg, #fff 0%, rgba(255, 80, 80, 0.9) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1
+    }
+
+    .stat-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.5rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: 0.3rem
+    }
+
+    .stat-divider {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.5rem;
+      color: var(--border-red);
+      letter-spacing: 0.2em
+    }
+
+    /* SKILL CARDS */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem
+    }
+
+    .skill-card {
+      padding: 2rem;
+      position: relative;
+      overflow: hidden
+    }
+
+    .skill-icon {
+      width: 3.1rem;
+      height: 3.1rem;
+      background: var(--red-dim);
+      border-radius: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+      transition: transform 0.3s
+    }
+
+    .skill-card:hover .skill-icon {
+      transform: rotate(8deg)
+    }
+
+    .skill-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--red);
+      transform: scaleX(0.5);
+      opacity: 0;
+      transition: transform 0.3s, opacity 0.3s
+    }
+
+    .skill-card:hover::after {
+      transform: scaleX(1);
+      opacity: 1
+    }
+
+    .tag-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-top: 1rem
+    }
+
+    .tag-item {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.48rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border)
+    }
+
+    .tag-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0
+    }
+
+    /* PHILOSOPHY */
+    .philosophy-card {
+      padding: 4rem 3rem;
+      border-radius: 2.5rem;
+      position: relative;
+      overflow: hidden
+    }
+
+    .philosophy-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 80% at 20% 80%, rgba(80, 0, 0, 0.3), transparent 60%), radial-gradient(ellipse 60% 60% at 80% 20%, rgba(58, 0, 0, 0.2), transparent 60%);
+      animation: auroraShift 8s ease-in-out infinite alternate
+    }
+
+    @keyframes auroraShift {
+      0% {
+        opacity: 0.6
+      }
+
+      100% {
+        opacity: 1
+      }
+    }
+
+    .quote-mark {
+      position: absolute;
+      top: 1rem;
+      right: 2rem;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 15rem;
+      line-height: 1;
+      color: rgba(255, 26, 26, 0.04);
+      pointer-events: none;
+      z-index: 0
+    }
+
+    /* BUTTONS */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      border-radius: 99px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-size: 0.6rem
+    }
+
+    .btn-primary {
+      background: var(--red);
+      color: #fff;
+      border: none;
+      padding: 1rem 2rem;
+      box-shadow: 0 0 20px var(--red-glow)
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 8px 30px var(--red-glow)
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      padding: 1rem 2rem
+    }
+
+    .btn-outline:hover {
+      border-color: var(--red);
+      color: rgba(255, 80, 80, 0.9);
+      transform: translateY(-3px)
+    }
+
+    /* SOCIAL LINKS */
+    .social-links {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+      flex-wrap: wrap
+    }
+
+    .social-link {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.52rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-decoration: none;
+      position: relative;
+      padding-bottom: 2px;
+      transition: color 0.25s
+    }
+
+    .social-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--red);
+      transition: width 0.3s
+    }
+
+    .social-link:hover {
+      color: rgba(255, 80, 80, 0.9)
+    }
+
+    .social-link:hover::after {
+      width: 100%
+    }
+
+    /* ABOUT PAGE */
+    .about-hero {
+      padding: 8rem 2rem 4rem;
+      max-width: 1200px;
+      margin: 0 auto
+    }
+
+    .bio-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 3rem;
+      align-items: start
+    }
+
+    .avatar-card {
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 4rem;
+      color: var(--red);
+      border-radius: 1.5rem
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem
+    }
+
+    .timeline {
+      position: relative;
+      padding: 2rem 0
+    }
+
+    .timeline-line {
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, var(--red), transparent)
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-bottom: 3rem;
+      position: relative
+    }
+
+    .timeline-item:nth-child(even) .timeline-content {
+      grid-column: 2
+    }
+
+    .timeline-item:nth-child(odd) .timeline-content {
+      grid-column: 1;
+      text-align: right
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: 50%;
+      top: 1.5rem;
+      width: 10px;
+      height: 10px;
+      background: var(--red);
+      border-radius: 50%;
+      transform: translateX(-50%);
+      box-shadow: 0 0 12px var(--red-glow)
+    }
+
+    .skill-bar-wrap {
+      margin-bottom: 1.5rem
+    }
+
+    .skill-bar-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.5rem
+    }
+
+    .skill-bar-track {
+      height: 2px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 99px;
+      overflow: hidden
+    }
+
+    .skill-bar-fill {
+      height: 100%;
+      background: var(--red);
+      border-radius: 99px;
+      width: 0;
+      transition: width 1.2s cubic-bezier(0.23, 1, 0.32, 1)
+    }
+
+    /* WORK PAGE */
+    .filter-tabs {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap
+    }
+
+    .filter-tab {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.52rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      padding: 0.5rem 1.25rem;
+      border-radius: 99px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.25s
+    }
+
+    .filter-tab.active,
+    .filter-tab:hover {
+      border-color: var(--red);
+      color: #fff;
+      background: var(--red-dim)
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem
+    }
+
+    .project-card {
+      padding: 2rem;
+      cursor: pointer
+    }
+
+    .project-category {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.48rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 0.75rem
+    }
+
+    .project-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      line-height: 1.2
+    }
+
+    .project-desc {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      margin-bottom: 1.25rem;
+      line-height: 1.6
+    }
+
+    .tech-tags {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.25rem
+    }
+
+    .tech-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.45rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.75rem;
+      border-radius: 99px;
+      background: var(--red-dim);
+      color: rgba(255, 80, 80, 0.8);
+      border: 1px solid var(--border-red)
+    }
+
+    .project-links {
+      display: flex;
+      gap: 0.75rem
+    }
+
+    /* CONTACT PAGE */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem
+    }
+
+    .form-field {
+      margin-bottom: 1.25rem
+    }
+
+    .form-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.48rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      display: block;
+      margin-bottom: 0.5rem
+    }
+
+    .form-input {
+      width: 100%;
+      background: rgba(12, 5, 5, 0.7);
+      border: 1px solid var(--border);
+      border-radius: 0.75rem;
+      padding: 0.85rem 1.1rem;
+      color: #fff;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      outline: none;
+      transition: border-color 0.25s;
+      -webkit-text-fill-color: #fff
+    }
+
+    .form-input::placeholder {
+      color: var(--text-muted)
+    }
+
+    .form-input:focus {
+      border-color: var(--red)
+    }
+
+    textarea.form-input {
+      min-height: 140px;
+      resize: vertical
+    }
+
+    .contact-card {
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem
+    }
+
+    .contact-icon {
+      width: 2.5rem;
+      height: 2.5rem;
+      background: var(--red-dim);
+      border-radius: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0
+    }
+
+    .avail-dot {
+      width: 8px;
+      height: 8px;
+      background: #22c55e;
+      border-radius: 50%;
+      display: inline-block;
+      animation: blink 1.5s ease-in-out infinite
+    }
+
+    @keyframes blink {
+
+      0%,
+      100% {
+        opacity: 1
+      }
+
+      50% {
+        opacity: 0.3
+      }
+    }
+
+    .success-msg {
+      text-align: center;
+      padding: 3rem 2rem
+    }
+
+    .check-icon {
+      width: 4rem;
+      height: 4rem;
+      background: rgba(34, 197, 94, 0.1);
+      border: 1px solid rgba(34, 197, 94, 0.3);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      font-size: 1.5rem
+    }
+
+    /* REVEAL ANIMATION */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.9s cubic-bezier(0.23, 1, 0.32, 1), transform 0.9s cubic-bezier(0.23, 1, 0.32, 1)
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0)
+    }
+
+    .reveal-delay-1 {
+      transition-delay: 0.1s
+    }
+
+    .reveal-delay-2 {
+      transition-delay: 0.2s
+    }
+
+    .reveal-delay-3 {
+      transition-delay: 0.3s
+    }
+
+    .reveal-delay-4 {
+      transition-delay: 0.4s
+    }
+
+    /* CTA SECTION */
+    .cta-heading {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 8vw, 6rem);
+      line-height: 0.92;
+      margin-bottom: 2rem
+    }
+
+    .cta-heading .gradient-text {
+      background: linear-gradient(135deg, #fff 0%, var(--red) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text
+    }
+
+    /* RESPONSIVE */
+    @media(max-width:768px) {
+      .nav-links {
+        display: none
+      }
+
+      .hamburger {
+        display: flex
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .skills-grid {
+        grid-template-columns: 1fr
+      }
+
+      .bio-grid {
+        grid-template-columns: 1fr
+      }
+
+      .values-grid {
+        grid-template-columns: 1fr
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr
+      }
+
+      .timeline-line {
+        left: 1rem
+      }
+
+      .timeline-item {
+        grid-template-columns: 1fr;
+        padding-left: 2.5rem
+      }
+
+      .timeline-item:nth-child(even) .timeline-content,
+      .timeline-item:nth-child(odd) .timeline-content {
+        grid-column: 1;
+        text-align: left
+      }
+
+      .timeline-dot {
+        left: 1rem
+      }
+
+      .chapter-num {
+        font-size: 4rem
+      }
+
+      section {
+        padding: 3rem 1.25rem
+      }
+
+      #navbar {
+        padding: 1rem 1.25rem
+      }
+
+      footer {
+        flex-direction: column;
+        text-align: center
+      }
+    }
+
+    @media(max-width:480px) {
+      .btn {
+        font-size: 0.52rem;
+        padding: 0.85rem 1.5rem
+      }
+
+      .philosophy-card {
+        padding: 2.5rem 1.5rem
+      }
+
+      .gate-btn {
+        padding: 0.85rem 2rem
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="cursor-dot"></div>
+  <div id="cursor-ring"></div>
+  <div id="bg-void"></div>
+  <div id="bg-ambient"></div>
+  <div id="grain"></div>
+  <div id="scanlines"></div>
+  <canvas id="particles"></canvas>
+
+  <!-- LANDING GATE -->
+  <div id="gate">
+    <div class="gate-spotlight"></div>
+    <div class="gate-title">
+      <div><span style="color:#fff">AUTO</span><span style="color:var(--red)">BIOGRAPHY</span></div>
+      <div style="color:rgba(255,255,255,0.35);font-size:clamp(1.5rem,5vw,4rem)">OF</div>
+      <div style="color:#fff">TASNIM ULLAH</div>
+    </div>
+    <button class="gate-btn" id="gate-btn">
+      UNLOCK EXPERIENCE
+      <div class="gate-progress" id="gate-progress"></div>
+    </button>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav id="navbar">
+    <a href="#" class="nav-monogram" onclick="navigate('home');return false">T·U</a>
+    <div class="nav-links">
+      <a href="#" onclick="navigate('home');return false" data-page="home">Home</a>
+      <a href="#" onclick="navigate('about');return false" data-page="about">About</a>
+      <a href="#" onclick="navigate('work');return false" data-page="work">Work</a>
+      <a href="#" onclick="navigate('contact');return false" data-page="contact">Contact</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div id="mobile-menu">
+    <button id="mobile-close" aria-label="Close menu">✕</button>
+    <a href="#" onclick="navigate('home');closeMobileMenu();return false">Home</a>
+    <a href="#" onclick="navigate('about');closeMobileMenu();return false">About</a>
+    <a href="#" onclick="navigate('work');closeMobileMenu();return false">Work</a>
+    <a href="#" onclick="navigate('contact');closeMobileMenu();return false">Contact</a>
+  </div>
+
+  <!-- HOME PAGE -->
+  <div class="page active" id="page-home">
+    <!-- Hero -->
+    <div class="hero" style="min-height:100vh;position:relative">
+      <div class="hero-name">
+        <span>TASNIM</span><br>
+        <span class="red">ULLAH.</span>
+      </div>
+      <p class="hero-subtitle">Designer · Dreamer · Devoter</p>
+      <div class="scroll-cue">
+        <span class="scroll-cue-label">Dive In</span>
+        <div class="scroll-cue-line"></div>
+      </div>
+    </div>
+
+    <!-- Origin Story -->
+    <section style="padding-top:6rem">
+      <div class="chapter-num">01</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start" id="origin-grid">
+        <div style="position:relative;z-index:1">
+          <div class="section-label reveal"><span>WHERE IT ALL BEGAN</span></div>
+          <h2 class="section-heading reveal reveal-delay-1">
+            THE SPARK<br><span class="red">OF CREATIVITY</span>
+          </h2>
+          <div class="glass" style="padding:2rem;margin-top:2rem" class="reveal reveal-delay-2">
+            <blockquote class="reveal reveal-delay-2"
+              style="font-style:italic;font-size:1.05rem;color:var(--text-dim);border-left:2px solid var(--red);padding-left:1.25rem;margin-bottom:1rem;line-height:1.7">
+              "Every pixel has a story. Every frame has a soul."
+            </blockquote>
+            <p class="reveal reveal-delay-3" style="color:var(--text-dim);font-size:0.9rem;line-height:1.8">
+              Born from a relentless curiosity and a love for visual storytelling, Tasnim Ullah has carved a unique
+              space in the world of design and video creation. From Bangladesh to the digital frontier, every project is
+              a new chapter in an ongoing autobiography of creativity.
+            </p>
+          </div>
+        </div>
+        <div class="reveal reveal-delay-3" id="origin-deco"
+          style="display:flex;align-items:center;justify-content:center">
+          <div
+            style="width:260px;height:260px;border:1px dashed rgba(255,26,26,0.35);border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(255,26,26,0.03)">
+            <svg width="80" height="80" viewBox="0 0 80 80" fill="none" opacity="0.28">
+              <rect x="10" y="10" width="24" height="24" rx="4" stroke="#ff1a1a" stroke-width="1.5" />
+              <rect x="46" y="10" width="24" height="24" rx="4" stroke="#ff1a1a" stroke-width="1.5" />
+              <rect x="10" y="46" width="24" height="24" rx="4" stroke="#ff1a1a" stroke-width="1.5" />
+              <rect x="46" y="46" width="24" height="24" rx="4" stroke="#ff1a1a" stroke-width="1.5" />
+              <line x1="22" y1="34" x2="22" y2="46" stroke="#ff1a1a" stroke-width="1" />
+              <line x1="58" y1="34" x2="58" y2="46" stroke="#ff1a1a" stroke-width="1" />
+              <line x1="34" y1="22" x2="46" y2="22" stroke="#ff1a1a" stroke-width="1" />
+              <line x1="34" y1="58" x2="46" y2="58" stroke="#ff1a1a" stroke-width="1" />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats -->
+    <section>
+      <div class="glass stats-grid reveal" style="padding:2.5rem">
+        <div style="text-align:center;padding:1rem">
+          <div class="stat-value" id="stat-years">0</div>
+          <div class="stat-divider">/ Years Active</div>
+          <div class="stat-label">Experience</div>
+        </div>
+        <div style="text-align:center;padding:1rem;border-left:1px solid var(--border)">
+          <div class="stat-value" id="stat-projects">0</div>
+          <div class="stat-divider">/ Projects</div>
+          <div class="stat-label">Completed</div>
+        </div>
+        <div style="text-align:center;padding:1rem;border-left:1px solid var(--border)">
+          <div class="stat-value" id="stat-clients">0</div>
+          <div class="stat-divider">/ Clients</div>
+          <div class="stat-label">Served</div>
+        </div>
+        <div style="text-align:center;padding:1rem;border-left:1px solid var(--border)">
+          <div class="stat-value">∞</div>
+          <div class="stat-divider">/ Curiosity</div>
+          <div class="stat-label">Unlimited</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section>
+      <div class="chapter-num">02</div>
+      <div style="position:relative;z-index:1">
+        <div class="section-label reveal"><span>TOOLS OF CREATIVITY</span></div>
+        <h2 class="section-heading reveal reveal-delay-1" style="margin-bottom:3rem">
+          WHAT I <span class="red">MASTER</span>
+        </h2>
+        <div class="skills-grid">
+          <div class="glass skill-card glass-hover reveal reveal-delay-1">
+            <div class="skill-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(255,80,80,0.8)"
+                stroke-width="1.5">
+                <polyline points="16 18 22 12 16 6" />
+                <polyline points="8 6 2 12 8 18" />
+              </svg>
+            </div>
+            <h3 style="font-size:1.1rem;font-weight:700;margin-bottom:0.5rem">Video Creation</h3>
+            <p style="font-size:0.82rem;color:var(--text-dim);line-height:1.6;margin-bottom:0.5rem">Cinematic
+              storytelling through DaVinci Resolve. Color science, pacing, and emotional resonance in every frame.</p>
+            <div class="tag-list">
+              <div class="tag-item">Story Telling</div>
+              <div class="tag-item">Engaging Visuals</div>
+              <div class="tag-item">Colour Science</div>
+            </div>
+          </div>
+          <div class="glass skill-card glass-hover reveal reveal-delay-2">
+            <div class="skill-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(255,80,80,0.8)"
+                stroke-width="1.5">
+                <path d="M12 19l7-7 3 3-7 7-3-3z" />
+                <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z" />
+                <path d="M2 2l7.586 7.586" />
+                <circle cx="11" cy="11" r="2" />
+              </svg>
+            </div>
+            <h3 style="font-size:1.1rem;font-weight:700;margin-bottom:0.5rem">Design</h3>
+            <p style="font-size:0.82rem;color:var(--text-dim);line-height:1.6;margin-bottom:0.5rem">Visual systems built
+              with Affinity Suite. Motion design that breathes life into static concepts.</p>
+            <div class="tag-list">
+              <div class="tag-item">Affinity Suite</div>
+              <div class="tag-item">Motion Design</div>
+              <div class="tag-item">Brand Identity</div>
+            </div>
+          </div>
+          <div class="glass skill-card glass-hover reveal reveal-delay-3">
+            <div class="skill-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(255,80,80,0.8)"
+                stroke-width="1.5">
+                <circle cx="12" cy="12" r="10" />
+                <line x1="2" y1="12" x2="22" y2="12" />
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+              </svg>
+            </div>
+            <h3 style="font-size:1.1rem;font-weight:700;margin-bottom:0.5rem">Innovation</h3>
+            <p style="font-size:0.82rem;color:var(--text-dim);line-height:1.6;margin-bottom:0.5rem">AI-powered workflows
+              and experimental tech. Building the future one integration at a time.</p>
+            <div class="tag-list">
+              <div class="tag-item">AI Powered Builds</div>
+              <div class="tag-item">AI Integration</div>
+              <div class="tag-item">Performance Tuning</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Philosophy -->
+    <section>
+      <div class="chapter-num">03</div>
+      <div style="position:relative;z-index:1">
+        <div class="section-label reveal"><span>MY PHILOSOPHY</span></div>
+        <div class="glass philosophy-card reveal reveal-delay-1" style="margin-top:1.5rem">
+          <div class="quote-mark">"</div>
+          <div style="position:relative;z-index:1">
+            <h2 class="section-heading" style="font-size:clamp(2.5rem,6vw,4.5rem);margin-bottom:1.5rem">
+              STAY <span class="red">HUNGRY.</span><br>
+              STAY <span class="red">FOOLISH.</span><br>
+              STAY IN THE VOID.
+            </h2>
+            <p style="max-width:560px;color:var(--text-dim);font-size:0.92rem;line-height:1.85">
+              In the space between what is and what could be, creativity finds its truest form. The void isn't emptiness
+              — it's infinite potential, waiting for the one who dares to reach in.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section style="text-align:center;padding-bottom:8rem">
+      <div class="section-label reveal" style="justify-content:center"><span>GET IN TOUCH</span></div>
+      <h2 class="cta-heading reveal reveal-delay-1">
+        LET'S MAKE<br>THE <span class="gradient-text">HISTORY.</span>
+      </h2>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:2.5rem"
+        class="reveal reveal-delay-2">
+        <button class="btn btn-primary" onclick="navigate('contact')">INITIATE CONNECTION →</button>
+        <a class="btn btn-outline" href="/cv.pdf" download>KNOW MORE (CV) ↓</a>
+      </div>
+      <div class="social-links reveal reveal-delay-3" style="justify-content:center">
+        <a href="https://github.com/" target="_blank" class="social-link">Github</a>
+        <a href="https://linkedin.com/" target="_blank" class="social-link">LinkedIn</a>
+        <a href="https://x.com/" target="_blank" class="social-link">X.com</a>
+        <a href="https://facebook.com/" target="_blank" class="social-link">Facebook</a>
+      </div>
+    </section>
+  </div>
+
+  <!-- ABOUT PAGE -->
+  <div class="page" id="page-about">
+    <div class="about-hero" style="padding-top:8rem">
+      <div class="section-label reveal"><span>KNOW THE PERSON</span></div>
+      <h1 class="section-heading reveal reveal-delay-1"
+        style="font-size:clamp(4rem,14vw,10rem);line-height:0.85;margin-bottom:1rem">
+        ABOUT.<br><span class="red">ME</span>
+      </h1>
+      <p class="reveal reveal-delay-2"
+        style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.4em;text-transform:uppercase;color:var(--text-muted)">
+        The person behind the pixels.</p>
+    </div>
+
+    <section>
+      <div class="bio-grid">
+        <div class="reveal">
+          <div class="glass avatar-card" style="width:100%;max-width:300px;height:300px;font-size:5rem">
+            T.U.
+          </div>
+        </div>
+        <div>
+          <div class="section-label reveal"><span>BIO</span></div>
+          <div class="reveal reveal-delay-1" style="color:var(--text-dim);font-size:0.95rem;line-height:1.9">
+            <p style="margin-bottom:1rem">
+              Tasnim Ullah is a creative from Bangladesh — a designer, video creator, and digital innovator who lives at
+              the intersection of art and technology.
+            </p>
+            <p style="margin-bottom:1rem">
+              What started as a curiosity about visual storytelling quickly evolved into a full-fledged craft. From
+              DaVinci Resolve color grading sessions that stretch into the night, to building AI-integrated pipelines
+              that push the boundaries of what's possible — Tasnim is always in pursuit of the extraordinary.
+            </p>
+            <p>
+              Driven by a deep belief that creativity is not a talent but a discipline, every project is approached with
+              the philosophy of the void: strip away the noise, find the signal, and let the work speak with
+              unforgettable clarity.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-label reveal"><span>VALUES & PRINCIPLES</span></div>
+      <h2 class="section-heading reveal reveal-delay-1" style="margin-bottom:2.5rem">WHAT <span class="red">DRIVES
+          ME</span></h2>
+      <div class="values-grid">
+        <div class="glass glass-hover reveal reveal-delay-1" style="padding:2rem">
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--red);margin-bottom:0.75rem">01
+          </div>
+          <h3 style="font-weight:700;margin-bottom:0.75rem">Design First</h3>
+          <p style="color:var(--text-dim);font-size:0.85rem;line-height:1.7">Aesthetics are not decoration — they are
+            function. Every visual decision serves a purpose deeper than beauty.</p>
+        </div>
+        <div class="glass glass-hover reveal reveal-delay-2" style="padding:2rem">
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--red);margin-bottom:0.75rem">02
+          </div>
+          <h3 style="font-weight:700;margin-bottom:0.75rem">Deep Work</h3>
+          <p style="color:var(--text-dim);font-size:0.85rem;line-height:1.7">The void philosophy: total immersion,
+            distraction elimination, pure creative output. No half-measures.</p>
+        </div>
+        <div class="glass glass-hover reveal reveal-delay-3" style="padding:2rem">
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--red);margin-bottom:0.75rem">03
+          </div>
+          <h3 style="font-weight:700;margin-bottom:0.75rem">Always Learning</h3>
+          <p style="color:var(--text-dim);font-size:0.85rem;line-height:1.7">AI, new tools, emerging workflows —
+            curiosity is the only constant. The craft never stops evolving.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-label reveal"><span>JOURNEY</span></div>
+      <h2 class="section-heading reveal reveal-delay-1" style="margin-bottom:3rem">THE <span class="red">TIMELINE</span>
+      </h2>
+      <div class="timeline">
+        <div class="timeline-line"></div>
+        <div class="timeline-item">
+          <div class="timeline-content glass reveal" style="padding:1.5rem">
+            <div
+              style="font-family:'JetBrains Mono',monospace;font-size:0.52rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--red);margin-bottom:0.5rem">
+              2024</div>
+            <h3 style="font-weight:700;margin-bottom:0.5rem">Started the Journey</h3>
+            <p style="color:var(--text-dim);font-size:0.85rem;line-height:1.6">Took the leap into freelance creative
+              work. The first frame. The first design. The beginning of the autobiography.</p>
+          </div>
+          <div class="timeline-dot"></div>
+        </div>
+        <div class="timeline-item">
+          <div></div>
+          <div class="timeline-content glass reveal" style="padding:1.5rem">
+            <div
+              style="font-family:'JetBrains Mono',monospace;font-size:0.52rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--red);margin-bottom:0.5rem">
+              2024</div>
+            <h3 style="font-weight:700;margin-bottom:0.5rem">First Client</h3>
+            <p style="color:var(--text-dim);font-size:0.85rem;line-height:1.6">Delivered the first professional project.
+              Proof that vision and execution could align perfectly.</p>
+          </div>
+          <div class="timeline-dot"></div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-content glass reveal" style="padding:1.5rem">
+            <div
+              style="font-family:'JetBrains Mono',monospace;font-size:0.52rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--red);margin-bottom:0.5rem">
+              2025</div>
+            <h3 style="font-weight:700;margin-bottom:0.5rem">10+ Projects</h3>
+            <p style="color:var(--text-dim);font-size:0.85rem;line-height:1.6">A portfolio that speaks for itself.
+              Video, design, and innovation — each project adding a new dimension.</p>
+          </div>
+          <div class="timeline-dot"></div>
+        </div>
+        <div class="timeline-item">
+          <div></div>
+          <div class="timeline-content glass reveal" style="padding:1.5rem">
+            <div
+              style="font-family:'JetBrains Mono',monospace;font-size:0.52rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--red);margin-bottom:0.5rem">
+              2026+</div>
+            <h3 style="font-weight:700;margin-bottom:0.5rem">Building the Future</h3>
+            <p style="color:var(--text-dim);font-size:0.85rem;line-height:1.6">AI integration, global clients, and work
+              that outlives the moment. The story is just getting started.</p>
+          </div>
+          <div class="timeline-dot"></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-label reveal"><span>EXPERTISE LEVELS</span></div>
+      <h2 class="section-heading reveal reveal-delay-1" style="margin-bottom:2.5rem">SKILL <span
+          class="red">BREAKDOWN</span></h2>
+      <div class="glass reveal reveal-delay-2" style="padding:2.5rem" id="skills-section">
+        <div class="skill-bar-wrap">
+          <div class="skill-bar-header"><span style="font-size:0.85rem;font-weight:600">Video Editing</span><span
+              style="font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--red)">90%</span></div>
+          <div class="skill-bar-track">
+            <div class="skill-bar-fill" data-width="90%"></div>
+          </div>
+        </div>
+        <div class="skill-bar-wrap">
+          <div class="skill-bar-header"><span style="font-size:0.85rem;font-weight:600">Graphic Design</span><span
+              style="font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--red)">85%</span></div>
+          <div class="skill-bar-track">
+            <div class="skill-bar-fill" data-width="85%"></div>
+          </div>
+        </div>
+        <div class="skill-bar-wrap">
+          <div class="skill-bar-header"><span style="font-size:0.85rem;font-weight:600">AI Tools</span><span
+              style="font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--red)">80%</span></div>
+          <div class="skill-bar-track">
+            <div class="skill-bar-fill" data-width="80%"></div>
+          </div>
+        </div>
+        <div class="skill-bar-wrap" style="margin-bottom:0">
+          <div class="skill-bar-header"><span style="font-size:0.85rem;font-weight:600">Motion Design</span><span
+              style="font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--red)">75%</span></div>
+          <div class="skill-bar-track">
+            <div class="skill-bar-fill" data-width="75%"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- WORK PAGE -->
+  <div class="page" id="page-work">
+    <div class="about-hero" style="padding-top:8rem">
+      <div class="section-label reveal"><span>PORTFOLIO</span></div>
+      <h1 class="section-heading reveal reveal-delay-1"
+        style="font-size:clamp(4rem,14vw,10rem);line-height:0.85;margin-bottom:1rem">
+        SELECTED<br><span class="red">WORK.</span>
+      </h1>
+      <p class="reveal reveal-delay-2"
+        style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.4em;text-transform:uppercase;color:var(--text-muted)">
+        Projects that shaped the craft.</p>
+    </div>
+
+    <section>
+      <div class="filter-tabs reveal" id="filter-tabs" style="margin-bottom:2.5rem">
+        <button class="filter-tab active" data-filter="all">All</button>
+        <button class="filter-tab" data-filter="video">Video</button>
+        <button class="filter-tab" data-filter="design">Design</button>
+        <button class="filter-tab" data-filter="innovation">Innovation</button>
+      </div>
+      <div class="projects-grid" id="projects-grid"></div>
+    </section>
+
+    <section style="text-align:center;padding-bottom:8rem">
+      <div class="glass reveal" style="padding:3rem;border-radius:2rem">
+        <p class="reveal"
+          style="font-family:'JetBrains Mono',monospace;font-size:0.52rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--red);margin-bottom:1rem">
+          READY TO COLLABORATE?</p>
+        <h2 class="section-heading reveal reveal-delay-1" style="font-size:2.5rem;margin-bottom:1.5rem">LET'S BUILD
+          SOMETHING <span class="red">INDELIBLE.</span></h2>
+        <button class="btn btn-primary reveal reveal-delay-2" onclick="navigate('contact')">INITIATE CONNECTION
+          →</button>
+      </div>
+    </section>
+  </div>
+
+  <!-- CONTACT PAGE -->
+  <div class="page" id="page-contact">
+    <div class="about-hero" style="padding-top:8rem">
+      <div class="section-label reveal"><span>LET'S TALK</span></div>
+      <h1 class="section-heading reveal reveal-delay-1"
+        style="font-size:clamp(3rem,10vw,8rem);line-height:0.85;margin-bottom:1rem">
+        LET'S MAKE<br>THE <span class="red">HISTORY.</span>
+      </h1>
+      <p class="reveal reveal-delay-2"
+        style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.4em;text-transform:uppercase;color:var(--text-muted)">
+        Pick a channel. Let's build something indelible.</p>
+    </div>
+
+    <section>
+      <div class="contact-grid">
+        <div>
+          <div id="contact-form-wrap">
+            <div class="section-label reveal"><span>SEND A MESSAGE</span></div>
+            <div class="reveal reveal-delay-1">
+              <div class="form-field">
+                <label class="form-label">Name</label>
+                <input type="text" class="form-input" id="f-name" placeholder="Your name">
+              </div>
+              <div class="form-field">
+                <label class="form-label">Email</label>
+                <input type="email" class="form-input" id="f-email" placeholder="your@email.com">
+              </div>
+              <div class="form-field">
+                <label class="form-label">Subject</label>
+                <input type="text" class="form-input" id="f-subject" placeholder="What's this about?">
+              </div>
+              <div class="form-field">
+                <label class="form-label">Message</label>
+                <textarea class="form-input" id="f-message" placeholder="Tell me about your project..."></textarea>
+              </div>
+              <div id="form-error"
+                style="color:var(--red);font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.15em;margin-bottom:1rem;display:none">
+              </div>
+              <button class="btn btn-primary" style="width:100%;justify-content:center" id="submit-btn"
+                onclick="submitForm()">SEND MESSAGE →</button>
+            </div>
+          </div>
+          <div id="contact-success" style="display:none">
+            <div class="glass success-msg">
+              <div class="check-icon">✓</div>
+              <h3 style="font-family:'Bebas Neue',sans-serif;font-size:2rem;margin-bottom:0.75rem">MESSAGE RECEIVED.
+              </h3>
+              <p style="color:var(--text-dim);font-size:0.9rem">I'll be in touch. The conversation has begun.</p>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="section-label reveal"><span>DIRECT CHANNELS</span></div>
+          <div class="reveal reveal-delay-1">
+            <a href="mailto:tasnimullah910@gmail.com" class="glass contact-card glass-hover"
+              style="text-decoration:none;color:#fff;display:flex;margin-bottom:1rem">
+              <div class="contact-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,80,80,0.8)"
+                  stroke-width="1.5">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                  <polyline points="22,6 12,13 2,6" />
+                </svg>
+              </div>
+              <div>
+                <div
+                  style="font-family:'JetBrains Mono',monospace;font-size:0.48rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--text-muted);margin-bottom:0.25rem">
+                  Email</div>
+                <div style="font-size:0.82rem;color:rgba(255,80,80,0.9)">tasnimullah910@gmail.com</div>
+              </div>
+            </a>
+            <a href="https://github.com/tasnimullah" target="_blank" class="glass contact-card glass-hover"
+              style="text-decoration:none;color:#fff;display:flex;margin-bottom:1rem">
+              <div class="contact-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="rgba(255,80,80,0.8)">
+                  <path
+                    d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
+                </svg>
+              </div>
+              <div>
+                <div
+                  style="font-family:'JetBrains Mono',monospace;font-size:0.48rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--text-muted);margin-bottom:0.25rem">
+                  Github</div>
+                <div style="font-size:0.82rem">github.com/tasnimullah</div>
+              </div>
+            </a>
+            <a href="https://www.linkedin.com/in/tasnim-ullah/" target="_blank" class="glass contact-card glass-hover"
+              style="text-decoration:none;color:#fff;display:flex;margin-bottom:1rem">
+              <div class="contact-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="rgba(255,80,80,0.8)">
+                  <path
+                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z" />
+                  <circle cx="4" cy="4" r="2" />
+                </svg>
+              </div>
+              <div>
+                <div
+                  style="font-family:'JetBrains Mono',monospace;font-size:0.48rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--text-muted);margin-bottom:0.25rem">
+                  LinkedIn</div>
+                <div style="font-size:0.82rem">linkedin.com/in/tasnimullah</div>
+              </div>
+            </a>
+            <div class="glass" style="padding:1.5rem;border-radius:1.25rem">
+              <div style="display:flex;align-items:center;gap:0.75rem">
+                <span class="avail-dot"></span>
+                <div>
+                  <div
+                    style="font-family:'JetBrains Mono',monospace;font-size:0.48rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--text-muted);margin-bottom:0.25rem">
+                    Based in Bangladesh 🇧🇩</div>
+                  <div style="font-size:0.85rem;color:var(--text-dim)">Currently open to freelance projects &amp;
+                    collaborations.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- FOOTER -->
+  <footer id="site-footer">
+    <div class="footer-logo">T·U</div>
+    <span class="footer-mono">© 2026 Tasnim Ullah — All Rights Reserved</span>
+    <span class="footer-mono">Designed &amp; Built with Passion</span>
+  </footer>
+
+  <script>
+    // ---- DATA ----
+    const projects = [
+      { id: 1, title: "Cinematic Brand Film", category: "video", description: "A 3-minute brand story for a local fashion label, color graded in DaVinci Resolve with a signature desaturated-warm aesthetic.", tags: ["DaVinci Resolve", "Color Science", "Storytelling"], liveUrl: "#" },
+      { id: 2, title: "Logo & Identity System", category: "design", description: "Complete visual identity for a tech startup — logo, type system, color palette, and usage guidelines built entirely in Affinity Designer.", tags: ["Affinity Designer", "Brand Identity", "Typography"], liveUrl: "#" },
+      { id: 3, title: "AI Content Pipeline", category: "innovation", description: "Automated content generation workflow integrating Claude AI with custom scripts to produce social media assets at scale.", tags: ["AI Integration", "Automation", "Python"], liveUrl: "#" },
+      { id: 4, title: "Documentary Short", category: "video", description: "A 12-minute documentary exploring street art culture in Dhaka, featuring dynamic interviews and kinetic typography sequences.", tags: ["Editing", "Motion Graphics", "Sound Design"], liveUrl: "#" },
+      { id: 5, title: "Portfolio UI Concept", category: "design", description: "Dark brutalist portfolio design system with glassmorphism components, red-black palette, and cinematic micro-interactions.", tags: ["UI Design", "Motion Design", "Glassmorphism"], liveUrl: "#" },
+      { id: 6, title: "Smart Thumbnail Gen", category: "innovation", description: "AI-powered thumbnail generation tool that analyzes video content and auto-suggests high-CTR thumbnail compositions.", tags: ["AI", "Computer Vision", "Automation"], liveUrl: "#" },
+    ];
+
+    // ---- NAVIGATION ----
+    let currentPage = 'home';
+    function navigate(page) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById('page-' + page).classList.add('active');
+      document.querySelectorAll('.nav-links a').forEach(a => {
+        a.classList.toggle('active', a.dataset.page === page);
+      });
+      currentPage = page;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (page === 'work') renderProjects('all');
+      if (page === 'about') setTimeout(animateSkillBars, 400);
+      initReveal();
+    }
+
+    // ---- GATE ----
+    const gateBtn = document.getElementById('gate-btn');
+    const gate = document.getElementById('gate');
+    const progress = document.getElementById('gate-progress');
+
+    if (!sessionStorage.getItem('unlocked')) {
+      gate.style.display = 'flex';
+    } else {
+      gate.classList.add('gone');
+    }
+
+    gateBtn.addEventListener('click', () => {
+      gateBtn.textContent = 'Unlocking…';
+      progress.style.width = '100%';
+      setTimeout(() => {
+        gate.classList.add('exit');
+        setTimeout(() => { gate.classList.add('gone'); sessionStorage.setItem('unlocked', '1'); }, 1000);
+      }, 1000);
+    });
+
+    // ---- PARTICLES ----
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    function resizeCanvas() { canvas.width = innerWidth; canvas.height = innerHeight; }
+    resizeCanvas(); window.addEventListener('resize', resizeCanvas);
+
+    function createParticle() {
+      return {
+        x: Math.random() * innerWidth, y: Math.random() * innerHeight,
+        r: 0.5 + Math.random() * 1.5, vx: (Math.random() - 0.5) * 0.3, vy: (Math.random() - 0.5) * 0.3,
+        alpha: 0.15 + Math.random() * 0.45
+      };
+    }
+    for (let i = 0; i < 60; i++) particles.push(createParticle());
+
+    function animateParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => {
+        p.x += p.vx; p.y += p.vy;
+        if (p.x < -10 || p.x > innerWidth + 10 || p.y < -10 || p.y > innerHeight + 10) {
+          Object.assign(p, createParticle());
+        }
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255,26,26,${p.alpha})`;
+        ctx.fill();
+      });
+      requestAnimationFrame(animateParticles);
+    }
+    animateParticles();
+
+    // ---- BG VOID ----
+    const bgVoid = document.getElementById('bg-void');
+    document.addEventListener('mousemove', e => {
+      const mx = (e.clientX / innerWidth * 100).toFixed(1) + '%';
+      const my = (e.clientY / innerHeight * 100).toFixed(1) + '%';
+      bgVoid.style.setProperty('--mx', mx);
+      bgVoid.style.setProperty('--my', my);
+    });
+
+    // ---- CURSOR ----
+    const dot = document.getElementById('cursor-dot');
+    const ring = document.getElementById('cursor-ring');
+    let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+    const isMobile = navigator.maxTouchPoints > 0;
+    if (!isMobile) {
+      document.addEventListener('mousemove', e => { mouseX = e.clientX; mouseY = e.clientY; dot.style.left = mouseX + 'px'; dot.style.top = mouseY + 'px'; });
+      document.addEventListener('mouseover', e => {
+        if (e.target.closest('a,button')) document.body.classList.add('cursor-hover');
+        else document.body.classList.remove('cursor-hover');
+      });
+      (function lerpRing() {
+        ringX += (mouseX - ringX) * 0.15; ringY += (mouseY - ringY) * 0.15;
+        ring.style.left = ringX + 'px'; ring.style.top = ringY + 'px';
+        requestAnimationFrame(lerpRing);
+      })();
+    } else {
+      dot.style.display = 'none'; ring.style.display = 'none';
+    }
+
+    // ---- NAVBAR SCROLL ----
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', scrollY > 40);
+    });
+
+    // ---- HAMBURGER ----
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    hamburger.addEventListener('click', () => mobileMenu.classList.add('open'));
+    document.getElementById('mobile-close').addEventListener('click', () => mobileMenu.classList.remove('open'));
+    function closeMobileMenu() { mobileMenu.classList.remove('open'); }
+
+    // ---- REVEAL ON SCROLL ----
+    function initReveal() {
+      const reveals = document.querySelectorAll('.page.active .reveal');
+      const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+      }, { threshold: 0.1, rootMargin: '-60px 0px' });
+      reveals.forEach(el => { if (!el.classList.contains('visible')) obs.observe(el); });
+    }
+    setTimeout(initReveal, 400);
+
+    // ---- STATS COUNTER ----
+    function countUp(el, target, suffix) {
+      let start = 0; const duration = 1200;
+      const step = ts => {
+        if (!start) start = ts;
+        const p = Math.min((ts - start) / duration, 1);
+        el.textContent = Math.round(p * target) + (suffix || '');
+        if (p < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    }
+    const statsObs = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) {
+        countUp(document.getElementById('stat-years'), 1, '+');
+        countUp(document.getElementById('stat-projects'), 10, '+');
+        countUp(document.getElementById('stat-clients'), 3, '+');
+      }
+    }, { threshold: 0.5 });
+    const statsEl = document.querySelector('.stats-grid');
+    if (statsEl) statsObs.observe(statsEl);
+
+    // ---- SKILL BARS ----
+    function animateSkillBars() {
+      document.querySelectorAll('.skill-bar-fill').forEach(bar => {
+        bar.style.width = bar.dataset.width;
+      });
+    }
+    let skillBarsObserved = false;
+    const skillObs = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting && !skillBarsObserved) {
+        skillBarsObserved = true;
+        animateSkillBars();
+      }
+    }, { threshold: 0.3 });
+    const skillsSection = document.getElementById('skills-section');
+    if (skillsSection) skillObs.observe(skillsSection);
+
+    // ---- PROJECTS ----
+    function renderProjects(filter) {
+      const grid = document.getElementById('projects-grid');
+      const filtered = filter === 'all' ? projects : projects.filter(p => p.category === filter);
+      grid.innerHTML = filtered.map(p => `
+    <div class="glass project-card glass-hover reveal">
+      <div class="project-category">${p.category.toUpperCase()}</div>
+      <h3 class="project-title">${p.title}</h3>
+      <p class="project-desc">${p.description}</p>
+      <div class="tech-tags">${p.tags.map(t => `<span class="tech-tag">${t}</span>`).join('')}</div>
+      <div class="project-links">
+        <a href="${p.liveUrl}" class="btn btn-primary" style="font-size:0.5rem;padding:0.6rem 1.25rem">View Project →</a>
+        <button class="btn btn-outline" style="font-size:0.5rem;padding:0.6rem 1.25rem">Case Study</button>
+      </div>
+    </div>
+  `).join('');
+      setTimeout(initReveal, 50);
+    }
+
+    document.getElementById('filter-tabs').addEventListener('click', e => {
+      const btn = e.target.closest('.filter-tab');
+      if (!btn) return;
+      document.querySelectorAll('.filter-tab').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderProjects(btn.dataset.filter);
+    });
+
+    // ---- CONTACT FORM ----
+    function submitForm() {
+      const name = document.getElementById('f-name').value.trim();
+      const email = document.getElementById('f-email').value.trim();
+      const subject = document.getElementById('f-subject').value.trim();
+      const message = document.getElementById('f-message').value.trim();
+      const errEl = document.getElementById('form-error');
+      const btn = document.getElementById('submit-btn');
+      if (!name || !email || !subject || !message) {
+        errEl.textContent = 'All fields are required.'; errEl.style.display = 'block'; return;
+      }
+      errEl.style.display = 'none';
+      btn.textContent = 'SENDING…'; btn.disabled = true;
+      setTimeout(() => {
+        document.getElementById('contact-form-wrap').style.display = 'none';
+        document.getElementById('contact-success').style.display = 'block';
+      }, 1200);
+    }
+
+    // ---- MOBILE ORIGIN GRID ----
+    function checkMobile() {
+      const grid = document.getElementById('origin-grid');
+      const deco = document.getElementById('origin-deco');
+      if (grid && deco) {
+        if (window.innerWidth < 768) { grid.style.gridTemplateColumns = '1fr'; deco.style.display = 'none'; }
+        else { grid.style.gridTemplateColumns = '1fr 1fr'; deco.style.display = 'flex'; }
+      }
+    }
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+  </script>
+</body>
+
+</html>
